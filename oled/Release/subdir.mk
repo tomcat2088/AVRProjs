@@ -4,16 +4,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../OLED.cpp \
 ../Pin.cpp \
 ../SPI.cpp \
 ../main.cpp 
 
 OBJS += \
+./OLED.o \
 ./Pin.o \
 ./SPI.o \
 ./main.o 
 
 CPP_DEPS += \
+./OLED.d \
 ./Pin.d \
 ./SPI.d \
 ./main.d 
