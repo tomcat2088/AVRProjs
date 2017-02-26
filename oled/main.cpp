@@ -11,10 +11,9 @@ int main() {
 	Pin rst(PIN_B, 2);
 	Pin mosi(PIN_B, 3);
 	Pin sck(PIN_B, 4);
-	//OLED oled(mosi, sck, dc, rst, cs);
-	//oled.begin();
-	DDRB = 0xff;
-sck.setHigh();
+	OLED oled(mosi, sck, dc, rst, cs);
+	oled.begin(false);
+//	oled.drawBuffer(buffer, sizeof(buffer) / sizeof(uint8_t));
 	while(1);
 	return 0;
 }

@@ -2,38 +2,28 @@ Archive member included because of file (symbol)
 
 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
                               /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o (exit)
+/usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+                              ./OLED.o (__do_copy_data)
 
 Discarded input sections
 
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
  .text          0x00000000        0x0 ./OLED.o
  .bss           0x00000000        0x0 ./OLED.o
- .text._ZN5OCAPI4OLEDC2ENS_3PinES1_S1_S1_S1_
-                0x00000000       0x16 ./OLED.o
  .text._ZN5OCAPI4OLEDD2Ev
                 0x00000000        0x4 ./OLED.o
- .text._ZN5OCAPI4OLED5beginEv
-                0x00000000      0x1a0 ./OLED.o
+ .text._ZN5OCAPI4OLED8drawLineEjjjj
+                0x00000000       0xb6 ./OLED.o
+ .text._ZN5OCAPI4OLED8drawTextEPKc
+                0x00000000        0x2 ./OLED.o
  .text          0x00000000        0x0 ./Pin.o
  .bss           0x00000000        0x0 ./Pin.o
- .text._ZN5OCAPI3Pin10setModeOutEv
-                0x00000000       0x74 ./Pin.o
  .text._ZN5OCAPI3Pin9setModeInEv
-                0x00000000       0x7c ./Pin.o
- .text._ZN5OCAPI3Pin6setLowEv
                 0x00000000       0x7c ./Pin.o
  .text._ZN5OCAPI3Pin3getEv
                 0x00000000        0x4 ./Pin.o
  .text          0x00000000        0x0 ./SPI.o
  .bss           0x00000000        0x0 ./SPI.o
- .text._ZN5OCAPI3SPIC2ENS_3PinES1_S1_S1_S1_
-                0x00000000       0x28 ./SPI.o
- .text._ZN5OCAPI3SPI5resetEv
-                0x00000000       0x3c ./SPI.o
- .text._ZN5OCAPI3SPI5beginEv
-                0x00000000       0x2c ./SPI.o
- .text._ZN5OCAPI3SPI11sendCommandEh
-                0x00000000       0x8c ./SPI.o
  .text._ZN5OCAPI3SPID2Ev
                 0x00000000        0x2 ./SPI.o
  .text          0x00000000        0x0 ./main.o
@@ -53,6 +43,21 @@ Discarded input sections
                 0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
  .text.libgcc.fixed
                 0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
 
 Memory Configuration
 
@@ -171,7 +176,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x138
+.text           0x00000000      0x4ca
  *(.vectors)
  .vectors       0x00000000       0x54 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
                 0x00000000                __vectors
@@ -210,6 +215,8 @@ END GROUP
  *(.init3)
  *(.init3)
  *(.init4)
+ .init4         0x00000060       0x16 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+                0x00000060                __do_copy_data
  *(.init4)
  *(.init5)
  *(.init5)
@@ -220,48 +227,77 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000060        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
+ .init9         0x00000076        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
  *(.init9)
  *(.text)
- .text          0x00000064        0x2 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
-                0x00000064                __vector_20
-                0x00000064                __vector_12
-                0x00000064                __bad_interrupt
-                0x00000064                __vector_6
-                0x00000064                __vector_3
-                0x00000064                __vector_11
-                0x00000064                __vector_13
-                0x00000064                __vector_17
-                0x00000064                __vector_19
-                0x00000064                __vector_7
-                0x00000064                __vector_5
-                0x00000064                __vector_4
-                0x00000064                __vector_9
-                0x00000064                __vector_2
-                0x00000064                __vector_15
-                0x00000064                __vector_8
-                0x00000064                __vector_14
-                0x00000064                __vector_10
-                0x00000064                __vector_16
-                0x00000064                __vector_18
-                0x00000064                __vector_1
-                0x00000066                . = ALIGN (0x2)
+ .text          0x0000007a        0x2 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
+                0x0000007a                __vector_20
+                0x0000007a                __vector_12
+                0x0000007a                __bad_interrupt
+                0x0000007a                __vector_6
+                0x0000007a                __vector_3
+                0x0000007a                __vector_11
+                0x0000007a                __vector_13
+                0x0000007a                __vector_17
+                0x0000007a                __vector_19
+                0x0000007a                __vector_7
+                0x0000007a                __vector_5
+                0x0000007a                __vector_4
+                0x0000007a                __vector_9
+                0x0000007a                __vector_2
+                0x0000007a                __vector_15
+                0x0000007a                __vector_8
+                0x0000007a                __vector_14
+                0x0000007a                __vector_10
+                0x0000007a                __vector_16
+                0x0000007a                __vector_18
+                0x0000007a                __vector_1
+                0x0000007c                . = ALIGN (0x2)
  *(.text.*)
+ .text._ZN5OCAPI4OLEDC2ENS_3PinES1_S1_S1_S1_
+                0x0000007c       0x14 ./OLED.o
+                0x0000007c                _ZN5OCAPI4OLEDC2ENS_3PinES1_S1_S1_S1_
+                0x0000007c                _ZN5OCAPI4OLEDC1ENS_3PinES1_S1_S1_S1_
+ .text._ZN5OCAPI4OLED10drawBufferEPhj
+                0x00000090       0x9c ./OLED.o
+                0x00000090                _ZN5OCAPI4OLED10drawBufferEPhj
+ .text._ZN5OCAPI4OLED5beginEb
+                0x0000012c       0xca ./OLED.o
+                0x0000012c                _ZN5OCAPI4OLED5beginEb
  .text._ZN5OCAPI3PinC2ENS_7PINKindEh
-                0x00000066        0x8 ./Pin.o
-                0x00000066                _ZN5OCAPI3PinC1ENS_7PINKindEh
-                0x00000066                _ZN5OCAPI3PinC2ENS_7PINKindEh
+                0x000001f6        0x8 ./Pin.o
+                0x000001f6                _ZN5OCAPI3PinC1ENS_7PINKindEh
+                0x000001f6                _ZN5OCAPI3PinC2ENS_7PINKindEh
+ .text._ZN5OCAPI3Pin10setModeOutEv
+                0x000001fe       0x74 ./Pin.o
+                0x000001fe                _ZN5OCAPI3Pin10setModeOutEv
  .text._ZN5OCAPI3Pin7setHighEv
-                0x0000006e       0x74 ./Pin.o
-                0x0000006e                _ZN5OCAPI3Pin7setHighEv
+                0x00000272       0x74 ./Pin.o
+                0x00000272                _ZN5OCAPI3Pin7setHighEv
+ .text._ZN5OCAPI3Pin6setLowEv
+                0x000002e6       0x7c ./Pin.o
+                0x000002e6                _ZN5OCAPI3Pin6setLowEv
+ .text._ZN5OCAPI3SPIC2ENS_3PinES1_S1_S1_S1_
+                0x00000362       0x28 ./SPI.o
+                0x00000362                _ZN5OCAPI3SPIC2ENS_3PinES1_S1_S1_S1_
+                0x00000362                _ZN5OCAPI3SPIC1ENS_3PinES1_S1_S1_S1_
+ .text._ZN5OCAPI3SPI5resetEv
+                0x0000038a       0x34 ./SPI.o
+                0x0000038a                _ZN5OCAPI3SPI5resetEv
+ .text._ZN5OCAPI3SPI5beginEv
+                0x000003be       0x22 ./SPI.o
+                0x000003be                _ZN5OCAPI3SPI5beginEv
+ .text._ZN5OCAPI3SPI11sendCommandEh
+                0x000003e0       0x7c ./SPI.o
+                0x000003e0                _ZN5OCAPI3SPI11sendCommandEh
  .text.startup.main
-                0x000000e2       0x52 ./main.o
-                0x000000e2                main
-                0x00000134                . = ALIGN (0x2)
+                0x0000045c       0x6a ./main.o
+                0x0000045c                main
+                0x000004c6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000134        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
-                0x00000134                exit
-                0x00000134                _exit
+ .fini9         0x000004c6        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+                0x000004c6                exit
+                0x000004c6                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -280,11 +316,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000134        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .fini0         0x000004c6        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x00000138                _etext = .
+                0x000004ca                _etext = .
 
-.data           0x00800060        0x0 load address 0x00000138
+.data           0x00800060      0x200 load address 0x000004ca
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
@@ -293,29 +329,32 @@ END GROUP
  .data          0x00800060        0x0 ./SPI.o
  .data          0x00800060        0x0 ./main.o
  .data          0x00800060        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .data          0x00800060        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
  *(.data*)
+ .data._ZL6buffer
+                0x00800060      0x200 ./OLED.o
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800060                . = ALIGN (0x2)
-                0x00800060                _edata = .
-                0x00800060                PROVIDE (__data_end, .)
+                0x00800260                . = ALIGN (0x2)
+                0x00800260                _edata = .
+                0x00800260                PROVIDE (__data_end, .)
 
-.bss            0x00800060        0x0
-                0x00800060                PROVIDE (__bss_start, .)
+.bss            0x00800260        0x0
+                0x00800260                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
-                0x00800060                PROVIDE (__bss_end, .)
-                0x00000138                __data_load_start = LOADADDR (.data)
-                0x00000138                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800260                PROVIDE (__bss_end, .)
+                0x000004ca                __data_load_start = LOADADDR (.data)
+                0x000006ca                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800060        0x0
-                0x00800060                PROVIDE (__noinit_start, .)
+.noinit         0x00800260        0x0
+                0x00800260                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800060                PROVIDE (__noinit_end, .)
-                0x00800060                _end = .
-                0x00800060                PROVIDE (__heap_start, .)
+                0x00800260                PROVIDE (__noinit_end, .)
+                0x00800260                _end = .
+                0x00800260                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -374,26 +413,31 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x20
+.debug_aranges  0x00000000       0x40
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .debug_aranges
+                0x00000020       0x20 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000       0xbe
+.debug_info     0x00000000      0x17c
  *(.debug_info)
  .debug_info    0x00000000       0xbe /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .debug_info    0x000000be       0xbe /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000       0x14
+.debug_abbrev   0x00000000       0x28
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .debug_abbrev  0x00000014       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
 
-.debug_line     0x00000000       0x58
+.debug_line     0x00000000       0xb9
  *(.debug_line)
  .debug_line    0x00000000       0x58 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .debug_line    0x00000058       0x61 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
 
 .debug_frame
  *(.debug_frame)
@@ -423,7 +467,12 @@ Cross Reference Table
 Symbol                                            File
 OCAPI::OLED::OLED(OCAPI::Pin, OCAPI::Pin, OCAPI::Pin, OCAPI::Pin, OCAPI::Pin) ./OLED.o
 OCAPI::OLED::OLED(OCAPI::Pin, OCAPI::Pin, OCAPI::Pin, OCAPI::Pin, OCAPI::Pin) ./OLED.o
-OCAPI::OLED::begin()                              ./OLED.o
+                                                  ./main.o
+OCAPI::OLED::begin(bool)                          ./OLED.o
+                                                  ./main.o
+OCAPI::OLED::drawBuffer(unsigned char*, unsigned int) ./OLED.o
+OCAPI::OLED::drawLine(unsigned int, unsigned int, unsigned int, unsigned int) ./OLED.o
+OCAPI::OLED::drawText(char const*)                ./OLED.o
 OCAPI::OLED::~OLED()                              ./OLED.o
 OCAPI::OLED::~OLED()                              ./OLED.o
 OCAPI::Pin::Pin(OCAPI::PINKind, unsigned char)    ./Pin.o
@@ -431,7 +480,6 @@ OCAPI::Pin::Pin(OCAPI::PINKind, unsigned char)    ./Pin.o
 OCAPI::Pin::Pin(OCAPI::PINKind, unsigned char)    ./Pin.o
 OCAPI::Pin::get()                                 ./Pin.o
 OCAPI::Pin::setHigh()                             ./Pin.o
-                                                  ./main.o
                                                   ./SPI.o
                                                   ./OLED.o
 OCAPI::Pin::setLow()                              ./Pin.o
@@ -449,9 +497,14 @@ OCAPI::SPI::reset()                               ./SPI.o
 OCAPI::SPI::sendCommand(unsigned char)            ./SPI.o
                                                   ./OLED.o
 OCAPI::SPI::~SPI()                                ./SPI.o
-OCAPI::SPI::~SPI()                                ./SPI.o
                                                   ./OLED.o
+OCAPI::SPI::~SPI()                                ./SPI.o
 __bad_interrupt                                   /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
+__data_end                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+__data_load_start                                 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+__data_start                                      /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+__do_copy_data                                    /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+                                                  ./OLED.o
 __heap_end                                        /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
 __init                                            /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
 __stack                                           /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o

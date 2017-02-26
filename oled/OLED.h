@@ -10,52 +10,6 @@
 
 #include "SPI.h"
 
-#define SSD1306_SETCONTRAST 0x81
-#define SSD1306_DISPLAYALLON_RESUME 0xA4
-#define SSD1306_DISPLAYALLON 0xA5
-#define SSD1306_NORMALDISPLAY 0xA6
-#define SSD1306_INVERTDISPLAY 0xA7
-#define SSD1306_DISPLAYOFF 0xAE
-#define SSD1306_DISPLAYON 0xAF
-
-#define SSD1306_SETDISPLAYOFFSET 0xD3
-#define SSD1306_SETCOMPINS 0xDA
-
-#define SSD1306_SETVCOMDETECT 0xDB
-
-#define SSD1306_SETDISPLAYCLOCKDIV 0xD5
-#define SSD1306_SETPRECHARGE 0xD9
-
-#define SSD1306_SETMULTIPLEX 0xA8
-
-#define SSD1306_SETLOWCOLUMN 0x00
-#define SSD1306_SETHIGHCOLUMN 0x10
-
-#define SSD1306_SETSTARTLINE 0x40
-
-#define SSD1306_MEMORYMODE 0x20
-#define SSD1306_COLUMNADDR 0x21
-#define SSD1306_PAGEADDR   0x22
-
-#define SSD1306_COMSCANINC 0xC0
-#define SSD1306_COMSCANDEC 0xC8
-
-#define SSD1306_SEGREMAP 0xA0
-
-#define SSD1306_CHARGEPUMP 0x8D
-
-#define SSD1306_EXTERNALVCC 0x1
-#define SSD1306_SWITCHCAPVCC 0x2
-
-// Scrolling #defines
-#define SSD1306_ACTIVATE_SCROLL 0x2F
-#define SSD1306_DEACTIVATE_SCROLL 0x2E
-#define SSD1306_SET_VERTICAL_SCROLL_AREA 0xA3
-#define SSD1306_RIGHT_HORIZONTAL_SCROLL 0x26
-#define SSD1306_LEFT_HORIZONTAL_SCROLL 0x27
-#define SSD1306_VERTICAL_AND_RIGHT_HORIZONTAL_SCROLL 0x29
-#define SSD1306_VERTICAL_AND_LEFT_HORIZONTAL_SCROLL 0x2A
-
 namespace OCAPI {
 class SPI;
 
@@ -67,16 +21,47 @@ typedef enum {
 	OLEDCommand_InvertDisplay = 0xA7,
 	OLEDCommand_DisplayOff = 0xAE,
 	OLEDCommand_DisplayOn = 0xAF,
+	OLEDCommand_SetDisplayOffset = 0xD3,
+	OLEDCommand_SetComPins = 0xDA,
+	OLEDCommand_SetVComDetect = 0xDB,
+	OLEDCommand_SetDisplayClockDiv = 0xD5,
+	OLEDCommand_SetPreCharge = 0xD9,
+	OLEDCommand_SetMultiplex = 0xA8,
+	OLEDCommand_SetLowColumn = 0x00,
+	OLEDCommand_SetHighColumn = 0x10,
+	OLEDCommand_SetStartLine = 0x40,
+	OLEDCommand_MemoryMode = 0x20,
+	OLEDCommand_ColumnAddr = 0x21,
+	OLEDCommand_PageAddr = 0x22,
+	OLEDCommand_ComScanInc = 0xc0,
+	OLEDCommand_ComScanDec = 0xc8,
+	OLEDCommand_SegRemap = 0xa0,
+	OLEDCommand_ChargePump = 0x8d,
+	OLEDCommand_ExternalVCC = 0x1,
+	OLEDCommand_SwitchCapVCC = 0x2,
+	OLEDCommand_ActivateScroll = 0x2f,
+	OLEDCommand_DeactivateScroll = 0x2e,
+	OLEDCommand_SetVerticalScrollArea = 0xa3,
+	OLEDCommand_RightHorizontalScroll = 0x26,
+	OLEDCommand_LeftHorizontalScroll = 0x27,
+	OLEDCommand_VerticalAndRightHorizontalScroll = 0x29,
+	OLEDCommand_VerticalAndLeftHorizontalScroll = 0x2a
 } OLEDCommand;
 
 class OLED {
 public:
 	OLED(Pin mosi, Pin sck, Pin dc, Pin rst, Pin cs);
-	void begin();
+	void begin(bool useExternVcc);
+// TODOs:
+	void drawBuffer(uint8_t *buffer, uint16_t bufferLen);
+	void drawLine(uint16_t x0,uint16_t y0, uint16_t x1,uint16_t y1);
+	void drawText(const char *str);
 	~OLED();
 
 private:
 	SPI spi;
+	uint16_t width;
+	uint16_t height;
 };
 
 } /* namespace OCAPI */

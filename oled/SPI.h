@@ -22,7 +22,7 @@ public:
 
 	~SPI();
 
-public:
+public :
 	Pin mosi;
 	Pin sck;
 	Pin dc;
