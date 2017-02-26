@@ -176,7 +176,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x4ca
+.text           0x00000000      0x506
  *(.vectors)
  .vectors       0x00000000       0x54 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
                 0x00000000                __vectors
@@ -259,45 +259,45 @@ END GROUP
                 0x0000007c                _ZN5OCAPI4OLEDC2ENS_3PinES1_S1_S1_S1_
                 0x0000007c                _ZN5OCAPI4OLEDC1ENS_3PinES1_S1_S1_S1_
  .text._ZN5OCAPI4OLED10drawBufferEPhj
-                0x00000090       0x9c ./OLED.o
+                0x00000090       0xd8 ./OLED.o
                 0x00000090                _ZN5OCAPI4OLED10drawBufferEPhj
  .text._ZN5OCAPI4OLED5beginEb
-                0x0000012c       0xca ./OLED.o
-                0x0000012c                _ZN5OCAPI4OLED5beginEb
+                0x00000168       0xca ./OLED.o
+                0x00000168                _ZN5OCAPI4OLED5beginEb
  .text._ZN5OCAPI3PinC2ENS_7PINKindEh
-                0x000001f6        0x8 ./Pin.o
-                0x000001f6                _ZN5OCAPI3PinC1ENS_7PINKindEh
-                0x000001f6                _ZN5OCAPI3PinC2ENS_7PINKindEh
+                0x00000232        0x8 ./Pin.o
+                0x00000232                _ZN5OCAPI3PinC1ENS_7PINKindEh
+                0x00000232                _ZN5OCAPI3PinC2ENS_7PINKindEh
  .text._ZN5OCAPI3Pin10setModeOutEv
-                0x000001fe       0x74 ./Pin.o
-                0x000001fe                _ZN5OCAPI3Pin10setModeOutEv
+                0x0000023a       0x74 ./Pin.o
+                0x0000023a                _ZN5OCAPI3Pin10setModeOutEv
  .text._ZN5OCAPI3Pin7setHighEv
-                0x00000272       0x74 ./Pin.o
-                0x00000272                _ZN5OCAPI3Pin7setHighEv
+                0x000002ae       0x74 ./Pin.o
+                0x000002ae                _ZN5OCAPI3Pin7setHighEv
  .text._ZN5OCAPI3Pin6setLowEv
-                0x000002e6       0x7c ./Pin.o
-                0x000002e6                _ZN5OCAPI3Pin6setLowEv
+                0x00000322       0x7c ./Pin.o
+                0x00000322                _ZN5OCAPI3Pin6setLowEv
  .text._ZN5OCAPI3SPIC2ENS_3PinES1_S1_S1_S1_
-                0x00000362       0x28 ./SPI.o
-                0x00000362                _ZN5OCAPI3SPIC2ENS_3PinES1_S1_S1_S1_
-                0x00000362                _ZN5OCAPI3SPIC1ENS_3PinES1_S1_S1_S1_
+                0x0000039e       0x28 ./SPI.o
+                0x0000039e                _ZN5OCAPI3SPIC2ENS_3PinES1_S1_S1_S1_
+                0x0000039e                _ZN5OCAPI3SPIC1ENS_3PinES1_S1_S1_S1_
  .text._ZN5OCAPI3SPI5resetEv
-                0x0000038a       0x34 ./SPI.o
-                0x0000038a                _ZN5OCAPI3SPI5resetEv
+                0x000003c6       0x34 ./SPI.o
+                0x000003c6                _ZN5OCAPI3SPI5resetEv
  .text._ZN5OCAPI3SPI5beginEv
-                0x000003be       0x22 ./SPI.o
-                0x000003be                _ZN5OCAPI3SPI5beginEv
+                0x000003fa       0x22 ./SPI.o
+                0x000003fa                _ZN5OCAPI3SPI5beginEv
  .text._ZN5OCAPI3SPI11sendCommandEh
-                0x000003e0       0x7c ./SPI.o
-                0x000003e0                _ZN5OCAPI3SPI11sendCommandEh
+                0x0000041c       0x7c ./SPI.o
+                0x0000041c                _ZN5OCAPI3SPI11sendCommandEh
  .text.startup.main
-                0x0000045c       0x6a ./main.o
-                0x0000045c                main
-                0x000004c6                . = ALIGN (0x2)
+                0x00000498       0x6a ./main.o
+                0x00000498                main
+                0x00000502                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000004c6        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
-                0x000004c6                exit
-                0x000004c6                _exit
+ .fini9         0x00000502        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+                0x00000502                exit
+                0x00000502                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -316,11 +316,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000004c6        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .fini0         0x00000502        0x4 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
  *(.fini0)
-                0x000004ca                _etext = .
+                0x00000506                _etext = .
 
-.data           0x00800060      0x200 load address 0x000004ca
+.data           0x00800060      0x200 load address 0x00000506
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm16.o
@@ -346,8 +346,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 0x00800260                PROVIDE (__bss_end, .)
-                0x000004ca                __data_load_start = LOADADDR (.data)
-                0x000006ca                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000506                __data_load_start = LOADADDR (.data)
+                0x00000706                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800260        0x0
                 0x00800260                PROVIDE (__noinit_start, .)

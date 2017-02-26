@@ -163,7 +163,7 @@ void OLED::begin(bool useExternVcc) {
 	drawBuffer(buffer, sizeof(buffer) / sizeof(uint8_t));
 }
 
-void OLED::drawBuffer(uint8_t *buffer, uint16_t bufferLen) {
+inline void beginDraw(SPI &spi) {
 	spi.sendCommand(OLEDCommand_ColumnAddr);
 		spi.sendCommand(0);   // Column start address (0 = reset)
 		spi.sendCommand(SSD1306_LCDWIDTH - 1); // Column end address (127 = reset)
@@ -177,25 +177,43 @@ void OLED::drawBuffer(uint8_t *buffer, uint16_t bufferLen) {
 		spi.cs.setHigh();
 		spi.dc.setHigh();
 		spi.cs.setLow();
+}
 
+inline void endDraw(SPI &spi) {
+	spi.cs.setHigh();
+}
+
+void OLED::drawBuffer(uint8_t *buffer, uint16_t bufferLen) {
+	beginDraw(spi);
+	char buf = 0xff;
 		for (uint16_t i = 0; i < (128 * 32 / 8); i++) {
+			int col = i % 128;
+			int cellRow = 7;
 			// Send Data
-			for (unsigned char bit = 0x80; bit; bit >>= 1) {
+			for (unsigned char bit = 0x01; bit; bit <<= 1) {
+				int row = i / 128 * 8 + cellRow;
 				// One bit will be transmitted when SCK change from low to high
 				spi.sck.setLow();
-				if (0xff & bit) {
-					spi.mosi.setHigh();
+				if (buf & bit) {
+					if (row == col) {
+						spi.mosi.setHigh();
+					} else {
+
+						spi.mosi.setLow();
+					}
+
 				} else {
 					spi.mosi.setLow();
 				}
 				spi.sck.setHigh();
+				cellRow --;
 			}
 		}
-		spi.cs.setHigh();
+		endDraw(spi);
 }
 
 void OLED::drawLine(uint16_t x0,uint16_t y0, uint16_t x1,uint16_t y1) {
-	spi.sendCommand(OLEDCommand_ColumnAddr);
+		spi.sendCommand(OLEDCommand_ColumnAddr);
 		spi.sendCommand(0);   // Column start address (0 = reset)
 		spi.sendCommand(SSD1306_LCDWIDTH - 1); // Column end address (127 = reset)
 		spi.sendCommand(OLEDCommand_PageAddr);
