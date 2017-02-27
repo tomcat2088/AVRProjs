@@ -70,6 +70,9 @@
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+<<<<<<< HEAD
 	<storageModule moduleId="refreshScope"/>
+=======
+>>>>>>> 33c3aa8d7ff095119d9bff5165b288a4de0941c3
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>

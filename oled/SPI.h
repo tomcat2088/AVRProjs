@@ -14,6 +14,7 @@ namespace OCAPI {
 
 class SPI {
 public:
+	SPI();
 	SPI(Pin mosi, Pin sck, Pin dc, Pin rst, Pin cs);
 	void begin();
 	void reset();
@@ -21,7 +22,7 @@ public:
 
 	~SPI();
 
-private:
+public :
 	Pin mosi;
 	Pin sck;
 	Pin dc;

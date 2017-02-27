@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+avrtarget/ClockFrequency=1000000
+avrtarget/ExtRAMSize=0
+avrtarget/ExtendedRAM=false
+avrtarget/MCUType=atmega16
+avrtarget/UseEEPROM=false
+avrtarget/UseExtendedRAMforHeap=true
+>>>>>>> 33c3aa8d7ff095119d9bff5165b288a4de0941c3
 avrtarget/avrdude/BitBangDelay=
 avrtarget/avrdude/Bitclock=
 avrtarget/avrdude/EEPROMFile=

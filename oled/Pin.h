@@ -12,27 +12,6 @@
 
 namespace OCAPI {
 
-static unsigned char DDRXs[] = {
-		DDRA,
-		DDRB,
-		DDRC,
-		DDRD
-};
-
-static unsigned char PORTXs[] = {
-		PORTA,
-		PORTB,
-		PORTC,
-		PORTD
-};
-
-static unsigned char PINXs[] = {
-		PINA,
-		PINB,
-		PINC,
-		PIND
-};
-
 typedef enum {
 	PIN_A,
 	PIN_B,
