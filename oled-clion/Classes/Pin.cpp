@@ -6,35 +6,85 @@
  */
 
 #include "Pin.h"
+#include <avr/io.h>
 
 using namespace OCAPI;
 
 Pin::Pin(PINKind pinKind, unsigned char pinNo) :
-		pinKind(pinKind),
-		pinNo(pinNo)
-{
+		pinKind(pinKind), pinNo(pinNo) {
 
 }
 
 void Pin::setModeOut() {
-	DDRXs[pinKind] |= 1 << pinNo;
+	switch (pinKind) {
+	case PIN_A:
+		DDRA |= 1 << pinNo;
+		break;
+	case PIN_B:
+		DDRB |= 1 << pinNo;
+		break;
+	case PIN_C:
+		DDRC |= 1 << pinNo;
+		break;
+	case PIN_D:
+		DDRD |= 1 << pinNo;
+		break;
+	}
 }
 
 void Pin::setModeIn() {
-	DDRXs[pinKind] &= ~(1 << pinNo);
+	switch (pinKind) {
+	case PIN_A:
+		DDRA &= ~(1 << pinNo);
+		break;
+	case PIN_B:
+		DDRB &= ~(1 << pinNo);
+		break;
+	case PIN_C:
+		DDRC &= ~(1 << pinNo);
+		break;
+	case PIN_D:
+		DDRD &= ~(1 << pinNo);
+		break;
+	}
 }
 
 void Pin::setHigh() {
-	PORTXs[pinKind] |= 1 << pinNo;
+	switch (pinKind) {
+	case PIN_A:
+		PORTA |= 1 << pinNo;
+		break;
+	case PIN_B:
+		PORTB |= 1 << pinNo;
+		break;
+	case PIN_C:
+		PORTC |= 1 << pinNo;
+		break;
+	case PIN_D:
+		PORTD |= 1 << pinNo;
+		break;
+	}
 }
 
 void Pin::setLow() {
-	PORTXs[pinKind] &= ~(1 << pinNo);
+	switch (pinKind) {
+	case PIN_A:
+		PORTA &= ~(1 << pinNo);
+		break;
+	case PIN_B:
+		PORTB &= ~(1 << pinNo);
+		break;
+	case PIN_C:
+		PORTC &= ~(1 << pinNo);
+		break;
+	case PIN_D:
+		PORTD &= ~(1 << pinNo);
+		break;
+	}
 }
 
 unsigned char Pin::get() {
-	unsigned char val = PINXs[pinKind] & (1 << pinNo);
-	return val;
+//	unsigned char val = PINXs[pinKind] & (1 << pinNo);
+	return 0xaa;
 }
-
 

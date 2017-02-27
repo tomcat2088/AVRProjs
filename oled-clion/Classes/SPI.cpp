@@ -69,6 +69,28 @@ void SPI::sendCommand(unsigned char command) {
 	cs.setHigh();
 }
 
+void SPI::sendData(uint8_t data) {
+    // Enable chip & set DC to Command Mode
+    cs.setHigh();
+    dc.setHigh();
+    cs.setLow();
+
+    // Send Data
+    for(unsigned char bit = 0x80; bit; bit >>= 1) {
+        // One bit will be transmitted when SCK change from low to high
+        sck.setLow();
+        if (data & bit) {
+            mosi.setHigh();
+        } else {
+            mosi.setLow();
+        }
+        sck.setHigh();
+    }
+
+    // Disable Chip Select
+    cs.setHigh();
+}
+
 SPI::~SPI() {
 
 }

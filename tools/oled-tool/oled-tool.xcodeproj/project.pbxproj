@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E1744501E64269A00928CFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E17444F1E64269A00928CFE /* AppDelegate.m */; };
+		8E1744531E64269A00928CFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1744521E64269A00928CFE /* main.m */; };
+		8E1744561E64269A00928CFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1744551E64269A00928CFE /* ViewController.m */; };
+		8E1744581E64269A00928CFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E1744571E64269A00928CFE /* Assets.xcassets */; };
+		8E17445B1E64269A00928CFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E1744591E64269A00928CFE /* Main.storyboard */; };
+		8E1744661E64269A00928CFE /* oled_toolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1744651E64269A00928CFE /* oled_toolTests.m */; };
+		8E1744731E642A9B00928CFE /* OLEDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1744721E642A9B00928CFE /* OLEDView.m */; };
+		8E1744761E642D6400928CFE /* particle_fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1744751E642D6400928CFE /* particle_fire.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8E1744621E64269A00928CFE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E1744431E64269900928CFE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E17444A1E64269900928CFE;
+			remoteInfo = "oled-tool";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8E17444B1E64269A00928CFE /* oled-tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oled-tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E17444E1E64269A00928CFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8E17444F1E64269A00928CFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8E1744521E64269A00928CFE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8E1744541E64269A00928CFE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8E1744551E64269A00928CFE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8E1744571E64269A00928CFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8E17445A1E64269A00928CFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8E17445C1E64269A00928CFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E1744611E64269A00928CFE /* oled-toolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "oled-toolTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E1744651E64269A00928CFE /* oled_toolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oled_toolTests.m; sourceTree = "<group>"; };
+		8E1744671E64269A00928CFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E1744711E642A9B00928CFE /* OLEDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLEDView.h; sourceTree = "<group>"; };
+		8E1744721E642A9B00928CFE /* OLEDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLEDView.m; sourceTree = "<group>"; };
+		8E1744751E642D6400928CFE /* particle_fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_fire.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8E1744481E64269900928CFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E17445E1E64269A00928CFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E1744421E64269900928CFE = {
+			isa = PBXGroup;
+			children = (
+				8E17444D1E64269A00928CFE /* oled-tool */,
+				8E1744641E64269A00928CFE /* oled-toolTests */,
+				8E17444C1E64269A00928CFE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8E17444C1E64269A00928CFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E17444B1E64269A00928CFE /* oled-tool.app */,
+				8E1744611E64269A00928CFE /* oled-toolTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E17444D1E64269A00928CFE /* oled-tool */ = {
+			isa = PBXGroup;
+			children = (
+				8E1744751E642D6400928CFE /* particle_fire.png */,
+				8E17444E1E64269A00928CFE /* AppDelegate.h */,
+				8E17444F1E64269A00928CFE /* AppDelegate.m */,
+				8E1744541E64269A00928CFE /* ViewController.h */,
+				8E1744551E64269A00928CFE /* ViewController.m */,
+				8E1744571E64269A00928CFE /* Assets.xcassets */,
+				8E1744591E64269A00928CFE /* Main.storyboard */,
+				8E17445C1E64269A00928CFE /* Info.plist */,
+				8E1744511E64269A00928CFE /* Supporting Files */,
+				8E1744711E642A9B00928CFE /* OLEDView.h */,
+				8E1744721E642A9B00928CFE /* OLEDView.m */,
+			);
+			path = "oled-tool";
+			sourceTree = "<group>";
+		};
+		8E1744511E64269A00928CFE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8E1744521E64269A00928CFE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E1744641E64269A00928CFE /* oled-toolTests */ = {
+			isa = PBXGroup;
+			children = (
+				8E1744651E64269A00928CFE /* oled_toolTests.m */,
+				8E1744671E64269A00928CFE /* Info.plist */,
+			);
+			path = "oled-toolTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8E17444A1E64269900928CFE /* oled-tool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E17446A1E64269A00928CFE /* Build configuration list for PBXNativeTarget "oled-tool" */;
+			buildPhases = (
+				8E1744471E64269900928CFE /* Sources */,
+				8E1744481E64269900928CFE /* Frameworks */,
+				8E1744491E64269900928CFE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "oled-tool";
+			productName = "oled-tool";
+			productReference = 8E17444B1E64269A00928CFE /* oled-tool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8E1744601E64269A00928CFE /* oled-toolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E17446D1E64269A00928CFE /* Build configuration list for PBXNativeTarget "oled-toolTests" */;
+			buildPhases = (
+				8E17445D1E64269A00928CFE /* Sources */,
+				8E17445E1E64269A00928CFE /* Frameworks */,
+				8E17445F1E64269A00928CFE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8E1744631E64269A00928CFE /* PBXTargetDependency */,
+			);
+			name = "oled-toolTests";
+			productName = "oled-toolTests";
+			productReference = 8E1744611E64269A00928CFE /* oled-toolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E1744431E64269900928CFE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = wangyang;
+				TargetAttributes = {
+					8E17444A1E64269900928CFE = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P48344HVQL;
+						ProvisioningStyle = Manual;
+					};
+					8E1744601E64269A00928CFE = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = P48344HVQL;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8E17444A1E64269900928CFE;
+					};
+				};
+			};
+			buildConfigurationList = 8E1744461E64269900928CFE /* Build configuration list for PBXProject "oled-tool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8E1744421E64269900928CFE;
+			productRefGroup = 8E17444C1E64269A00928CFE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E17444A1E64269900928CFE /* oled-tool */,
+				8E1744601E64269A00928CFE /* oled-toolTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8E1744491E64269900928CFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E1744761E642D6400928CFE /* particle_fire.png in Resources */,
+				8E1744581E64269A00928CFE /* Assets.xcassets in Resources */,
+				8E17445B1E64269A00928CFE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E17445F1E64269A00928CFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8E1744471E64269900928CFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E1744731E642A9B00928CFE /* OLEDView.m in Sources */,
+				8E1744561E64269A00928CFE /* ViewController.m in Sources */,
+				8E1744531E64269A00928CFE /* main.m in Sources */,
+				8E1744501E64269A00928CFE /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E17445D1E64269A00928CFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E1744661E64269A00928CFE /* oled_toolTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8E1744631E64269A00928CFE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8E17444A1E64269900928CFE /* oled-tool */;
+			targetProxy = 8E1744621E64269A00928CFE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8E1744591E64269A00928CFE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E17445A1E64269A00928CFE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8E1744681E64269A00928CFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8E1744691E64269A00928CFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		8E17446B1E64269A00928CFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer: yang wang (8VE635KN28)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = P48344HVQL;
+				INFOPLIST_FILE = "oled-tool/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ocean.oled-tool";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8E17446C1E64269A00928CFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer: yang wang (8VE635KN28)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = P48344HVQL;
+				INFOPLIST_FILE = "oled-tool/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ocean.oled-tool";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8E17446E1E64269A00928CFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = P48344HVQL;
+				INFOPLIST_FILE = "oled-toolTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ocean.oled-toolTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oled-tool.app/Contents/MacOS/oled-tool";
+			};
+			name = Debug;
+		};
+		8E17446F1E64269A00928CFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = P48344HVQL;
+				INFOPLIST_FILE = "oled-toolTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.ocean.oled-toolTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/oled-tool.app/Contents/MacOS/oled-tool";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E1744461E64269900928CFE /* Build configuration list for PBXProject "oled-tool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E1744681E64269A00928CFE /* Debug */,
+				8E1744691E64269A00928CFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E17446A1E64269A00928CFE /* Build configuration list for PBXNativeTarget "oled-tool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E17446B1E64269A00928CFE /* Debug */,
+				8E17446C1E64269A00928CFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E17446D1E64269A00928CFE /* Build configuration list for PBXNativeTarget "oled-toolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E17446E1E64269A00928CFE /* Debug */,
+				8E17446F1E64269A00928CFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E1744431E64269900928CFE /* Project object */;
+}

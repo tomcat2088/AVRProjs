@@ -14,14 +14,15 @@ namespace OCAPI {
 
 class SPI {
 public:
+	SPI();
 	SPI(Pin mosi, Pin sck, Pin dc, Pin rst, Pin cs);
 	void begin();
 	void reset();
-	void sendCommand(unsigned char command);
-
+	void sendCommand(uint8_t command);
+    void sendData(uint8_t data);
 	~SPI();
 
-private:
+public :
 	Pin mosi;
 	Pin sck;
 	Pin dc;
