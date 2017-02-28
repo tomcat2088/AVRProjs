@@ -54,11 +54,8 @@ public:
 	OLED(Pin mosi, Pin sck, Pin dc, Pin rst, Pin cs);
     OLED(Pin mosi, Pin sck, Pin dc, Pin rst, Pin cs, uint16_t width, uint16_t height);
 	void begin(bool useExternVcc);
-// TODOs:
 	void drawBuffer(uint8_t *buffer, uint16_t bufferLen);
-	void drawLine(Line line);
-    void drawLines(Line *line, uint16_t lineCount);
-	void drawText(const char *str);
+	void paint(Painter &painter);
 	~OLED();
 
 public:

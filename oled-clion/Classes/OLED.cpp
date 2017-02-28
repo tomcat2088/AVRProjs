@@ -40,7 +40,7 @@ void OLED::begin(bool useExternVcc) {
     spi.sendCommand(0x80);                           // the suggested ratio 0x80
 
     spi.sendCommand(OLEDCommand_SetMultiplex);                  // 0xA8
-    spi.sendCommand(width - 1);
+    spi.sendCommand(height - 1);
 
     spi.sendCommand(OLEDCommand_SetDisplayOffset);              // 0xD3
     spi.sendCommand(0x0);                                   // no offset
@@ -82,11 +82,12 @@ void OLED::begin(bool useExternVcc) {
 inline void beginDraw(OLED *oled) {
     oled->spi.sendCommand(OLEDCommand_ColumnAddr);
     oled->spi.sendCommand(0);   // Column start address (0 = reset)
-    oled->spi.sendCommand(-1); // Column end address (127 = reset)
+    oled->spi.sendCommand(oled->width - 1); // Column end address (127 = reset)
     oled->spi.sendCommand(OLEDCommand_PageAddr);
     oled->spi.sendCommand(0); // Page start address (0 = reset)
 
-    if (oled->width == 32) {
+    if (oled->height == 32)
+    {
         oled->spi.sendCommand(3); // Page end address
     }
 
@@ -101,57 +102,61 @@ inline void endDraw(OLED *oled) {
 
 void OLED::drawBuffer(uint8_t *buffer, uint16_t bufferLen) {
     beginDraw(this);
-    for (uint16_t i = 0; i < (width * height / nBitsPerChannel); i++) {
-        if (i < bufferLen) {
+    for (uint16_t i = 0; i < bufferLen; i++) {
             spi.sendData(buffer[i]);
-        }
     }
     endDraw(this);
 }
 
-void OLED::drawLine(Line line) {
-    beginDraw(this);
-    char buf = 0xff;
-    for (uint16_t i = 0; i < (width * height / nBitsPerChannel); i++) {
-        int col = i % 128;
-        int cellRow = 7;
-        uint8_t buf = 0x00;
-        for (uint8_t j = 0x80; j; j >>= 1) {
-            int row = i / 128 * 8 + cellRow;
-            Point loc = {col, row};
-            if (Graphics::pointOnLine(loc, line)) {
-                buf |= j;
-            }
-            cellRow--;
-        }
-        spi.sendData(buf);
-    }
-    endDraw(this);
+void OLED::paint(Painter &painter) {
+    uint16_t size;
+    uint8_t *buffer = painter.getBuffer(&size);
+    drawBuffer(buffer, size);
 }
-
-void OLED::drawLines(Line *line, uint16_t lineCount) {
-    beginDraw(this);
-    char buf = 0xff;
-    for (uint16_t i = 0; i < (width * height / nBitsPerChannel); i++) {
-        int col = i % 128;
-        int cellRow = 7;
-        uint8_t buf = 0x00;
-        for (uint8_t j = 0x80; j; j >>= 1) {
-            int row = i / 128 * 8 + cellRow;
-            Point loc = {col, row};
-            for (int k = 0; k < lineCount; ++k) {
-                if (Graphics::pointOnLine(loc, line[k])) {
-                    buf |= j;
-                }
-            }
-            cellRow--;
-        }
-        spi.sendData(buf);
-    }
-    endDraw(this);
-}
-
-void OLED::drawText(const char *str) {
-
-
-}
+//
+//void OLED::drawLine(Line line) {
+//    beginDraw(this);
+//    char buf = 0xff;
+//    for (uint16_t i = 0; i < (width * height / nBitsPerChannel); i++) {
+//        int col = i % 128;
+//        int cellRow = 7;
+//        uint8_t buf = 0x00;
+//        for (uint8_t j = 0x80; j; j >>= 1) {
+//            int row = i / 128 * 8 + cellRow;
+//            Point loc = {col, row};
+//            if (Graphics::pointOnLine(loc, line)) {
+//                buf |= j;
+//            }
+//            cellRow--;
+//        }
+//        spi.sendData(buf);
+//    }
+//    endDraw(this);
+//}
+//
+//void OLED::drawLines(Line *line, uint16_t lineCount) {
+//    beginDraw(this);
+//    char buf = 0xff;
+//    for (uint16_t i = 0; i < (width * height / nBitsPerChannel); i++) {
+//        int col = i % 128;
+//        int cellRow = 7;
+//        uint8_t buf = 0x00;
+//        for (uint8_t j = 0x80; j; j >>= 1) {
+//            int row = i / 128 * 8 + cellRow;
+//            Point loc = {col, row};
+//            for (int k = 0; k < lineCount; ++k) {
+//                if (Graphics::pointOnLine(loc, line[k])) {
+//                    buf |= j;
+//                }
+//            }
+//            cellRow--;
+//        }
+//        spi.sendData(buf);
+//    }
+//    endDraw(this);
+//}
+//
+//void OLED::drawText(const char *str) {
+//
+//
+//}
