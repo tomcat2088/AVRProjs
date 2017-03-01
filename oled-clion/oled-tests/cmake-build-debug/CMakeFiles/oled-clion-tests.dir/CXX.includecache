@@ -1,0 +1,62 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../oled/Classes/Graphics.h
+stdint.h
+-
+LinkedArray.h
+../../oled/Classes/LinkedArray.h
+
+../../oled/Classes/LinkedArray.h
+stdint.h
+-
+stdlib.h
+-
+
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled-tests/Graphics_tests.h
+Graphics.h
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled-tests/Graphics.h
+
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled-tests/LinkedArray_tests.h
+LinkedArray.h
+-
+
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled-tests/main.cpp
+stdlib.h
+-
+stdio.h
+-
+LinkedArray_tests.h
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled-tests/LinkedArray_tests.h
+Graphics_tests.h
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled-tests/Graphics_tests.h
+
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Graphics.cpp
+stdlib.h
+-
+string.h
+-
+Graphics.h
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Graphics.h
+
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Graphics.h
+stdint.h
+-
+LinkedArray.h
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/LinkedArray.h
+
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/LinkedArray.cpp
+LinkedArray.h
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/LinkedArray.h
+
+/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/LinkedArray.h
+stdint.h
+-
+stdlib.h
+-
+

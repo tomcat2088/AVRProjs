@@ -5,8 +5,13 @@ PROJECT(oled-clion-tests)
 file(GLOB TARGET_SRC
         "../oled/Classes/LinkedArray.h"
         "../oled/Classes/LinkedArray.cpp"
+        "../oled/Classes/Graphics.h"
+        "../oled/Classes/Graphics.cpp"
         "main.cpp"
 )
+
+include_directories(/usr/local/include)
+include_directories(/usr/include)
 
 SET(SOURCE_FILES
         ${TARGET_SRC}

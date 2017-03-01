@@ -82,7 +82,7 @@ public:
     void drawLine(Line line);
     void drawRect(Rect rect);
     void fillBufferShape();
-    void drawLines(LinkedArray &lines, uint16_t lineCount);
+    void drawLines(Line *lines, uint16_t lineCount);
     void drawText(const char *str);
 
     void beginPath();
@@ -96,7 +96,8 @@ private:
     uint16_t width;
     uint16_t height;
 
-    LinkedArray _lines;
+    Line _lines[30];
+    uint8_t _linesSize;
     Point pathStartLocation;
 };
 

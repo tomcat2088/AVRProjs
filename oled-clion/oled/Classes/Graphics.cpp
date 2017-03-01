@@ -113,9 +113,9 @@ void Painter::fillBufferShape() {
     }
 }
 
-void Painter::drawLines(LinkedArray &lines, uint16_t lineCount) {
+void Painter::drawLines(Line *lines, uint16_t lineCount) {
     for (int i = 0; i < lineCount; ++i) {
-        drawLine(line[i]);
+        drawLine(lines[i]);
     }
 }
 
@@ -124,7 +124,7 @@ void Painter::drawText(const char *str) {
 }
 
 void Painter::beginPath() {
-    _lines.clear();
+    _linesSize = 0;
 }
 
 void Painter::moveTo(int16_t x, int16_t y) {
@@ -132,24 +132,35 @@ void Painter::moveTo(int16_t x, int16_t y) {
 }
 
 void Painter::lineTo(int16_t x, int16_t y) {
-    if (_lines.size() > 0) {
-        Line *line = (Line *)_lines.at(_lines.size() - 1);
-        _lines.add(heap_MakeLine(line->end.x, line->end.y, x, y));
+//    if (_lines.size() > 0) {
+////        Line *line = (Line *)_lines.at(_lines.size() - 1);
+//        _lines.add(heap_MakeLine(pathStartLocation.x, pathStartLocation.y, x, y));
+//    } else {
+//        _lines.add(heap_MakeLine(pathStartLocation.x, pathStartLocation.y, x, y));
+//    }
+    if (_linesSize > 0) {
+        Line line = _lines[_linesSize - 1];
+        _lines[_linesSize] = MakeLine(line.end.x, line.end.y, x, y);
     } else {
-        _lines.add(heap_MakeLine(pathStartLocation.x, pathStartLocation.y, x, y));
+        _lines[_linesSize] = MakeLine(pathStartLocation.x, pathStartLocation.y, x, y);
     }
+    _linesSize++;
 }
 
 void Painter::closePath() {
-    Line *line = (Line *)_lines.at(_lines.size() - 1);
-    _lines.add(heap_MakeLine(line->end.x, line->end.y, pathStartLocation.x, pathStartLocation.y));
+//    Line *line = (Line *)_lines.at(_lines.size() - 1);
+//    _lines.add(heap_MakeLine(line->end.x, line->end.y, pathStartLocation.x, pathStartLocation.y));
+
+    Line line = _lines[_linesSize - 1];
+    _lines[_linesSize] = MakeLine(line.end.x, line.end.y, pathStartLocation.x, pathStartLocation.y);
+    _linesSize++;
 }
 
 void Painter::strokePath() {
-    drawLines(_lines, _lines.size());
+    drawLines(_lines, _linesSize);
 }
 
 void Painter::fillPath() {
-    drawLines(_lines, _lines.size());
+    drawLines(_lines, _linesSize);
     fillBufferShape();
 }

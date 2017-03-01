@@ -3,6 +3,7 @@
 
 #include "OLED.h"
 #include "LinkedArray.h"
+#include "math.h"
 
 using namespace OCAPI;
 
@@ -140,14 +141,47 @@ int main() {
     //菱形
     painter.clear();
     painter.beginPath();
+    painter.moveTo(SSD1306_LCDWIDTH / 2, 1);
+    painter.lineTo(SSD1306_LCDWIDTH - 2, SSD1306_LCDHEIGHT / 2 - 1);
+    painter.lineTo(SSD1306_LCDWIDTH / 2, SSD1306_LCDHEIGHT-1);
+    painter.lineTo(1, SSD1306_LCDHEIGHT / 2);
+    painter.closePath();
+    painter.strokePath();
+    oled.paint(painter);
+
+    painter.clear();
+    painter.beginPath();
     painter.moveTo(SSD1306_LCDWIDTH / 2, 0);
-    painter.lineTo(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT / 2);
+    painter.lineTo(SSD1306_LCDWIDTH - 1, SSD1306_LCDHEIGHT / 2);
     painter.lineTo(SSD1306_LCDWIDTH / 2, SSD1306_LCDHEIGHT);
     painter.lineTo(0, SSD1306_LCDHEIGHT / 2);
     painter.closePath();
     painter.fillPath();
     oled.paint(painter);
 
-    while(1);
+    // stroke rect
+    painter.drawRect(MakeRect(0,0,SSD1306_LCDWIDTH - 1,SSD1306_LCDHEIGHT - 1));
+    oled.paint(painter);
+
+
+
+    uint8_t phase = 0;
+    while(1) {
+        painter.clear();
+        painter.beginPath();
+        painter.moveTo(0, SSD1306_LCDHEIGHT / 2);
+        for (int16_t i = 0; i < 30; ++i) {
+            int16_t y = sin(i + phase) * 10 + SSD1306_LCDHEIGHT / 2;
+            if (y > SSD1306_LCDHEIGHT - 1) {
+                y = SSD1306_LCDHEIGHT - 1;
+            } else if (y < 0) {
+                y = 0;
+            }
+            painter.lineTo(i * SSD1306_LCDWIDTH / 30, y);
+        }
+        painter.strokePath();
+        oled.paint(painter);
+        phase += 1;
+    }
     return 0;
 }
