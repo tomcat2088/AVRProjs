@@ -12,7 +12,10 @@
 @interface ViewController : NSViewController
 @property (weak) IBOutlet NSImageView *imgView;
 @property (weak) IBOutlet OLEDView *outputView;
-
+@property (weak) IBOutlet NSImageView *inputImageView;
+@property (weak) IBOutlet NSTextView *outputTextView;
+@property (weak) IBOutlet NSTextField *oledWidth;
+@property (weak) IBOutlet NSTextField *oledHeight;
 
 @end
 

@@ -120,7 +120,8 @@ void Painter::drawLines(Line *lines, uint16_t lineCount) {
 }
 
 void Painter::drawText(const char *str) {
-
+    const char *pChar = str;
+    while (pChar != )
 }
 
 void Painter::beginPath() {

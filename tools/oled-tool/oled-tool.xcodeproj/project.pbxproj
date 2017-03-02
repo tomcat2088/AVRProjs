@@ -15,6 +15,9 @@
 		8E1744661E64269A00928CFE /* oled_toolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1744651E64269A00928CFE /* oled_toolTests.m */; };
 		8E1744731E642A9B00928CFE /* OLEDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1744721E642A9B00928CFE /* OLEDView.m */; };
 		8E1744761E642D6400928CFE /* particle_fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E1744751E642D6400928CFE /* particle_fire.png */; };
+		8E17447B1E67C06C00928CFE /* BufferArrayGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E17447A1E67C06C00928CFE /* BufferArrayGenerator.m */; };
+		8E17447F1E67C7E800928CFE /* FontGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E17447E1E67C7E800928CFE /* FontGenerator.m */; };
+		8E1744821E67C86D00928CFE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E1744811E67C86D00928CFE /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,11 @@
 		8E1744711E642A9B00928CFE /* OLEDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLEDView.h; sourceTree = "<group>"; };
 		8E1744721E642A9B00928CFE /* OLEDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLEDView.m; sourceTree = "<group>"; };
 		8E1744751E642D6400928CFE /* particle_fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle_fire.png; sourceTree = "<group>"; };
+		8E1744791E67C06C00928CFE /* BufferArrayGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferArrayGenerator.h; sourceTree = "<group>"; };
+		8E17447A1E67C06C00928CFE /* BufferArrayGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BufferArrayGenerator.m; sourceTree = "<group>"; };
+		8E17447D1E67C7E800928CFE /* FontGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontGenerator.h; sourceTree = "<group>"; };
+		8E17447E1E67C7E800928CFE /* FontGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontGenerator.m; sourceTree = "<group>"; };
+		8E1744811E67C86D00928CFE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E1744821E67C86D00928CFE /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +78,7 @@
 				8E17444D1E64269A00928CFE /* oled-tool */,
 				8E1744641E64269A00928CFE /* oled-toolTests */,
 				8E17444C1E64269A00928CFE /* Products */,
+				8E1744801E67C86D00928CFE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,17 +94,16 @@
 		8E17444D1E64269A00928CFE /* oled-tool */ = {
 			isa = PBXGroup;
 			children = (
-				8E1744751E642D6400928CFE /* particle_fire.png */,
+				8E17447C1E67C23C00928CFE /* core */,
 				8E17444E1E64269A00928CFE /* AppDelegate.h */,
 				8E17444F1E64269A00928CFE /* AppDelegate.m */,
 				8E1744541E64269A00928CFE /* ViewController.h */,
 				8E1744551E64269A00928CFE /* ViewController.m */,
 				8E1744571E64269A00928CFE /* Assets.xcassets */,
+				8E1744751E642D6400928CFE /* particle_fire.png */,
 				8E1744591E64269A00928CFE /* Main.storyboard */,
 				8E17445C1E64269A00928CFE /* Info.plist */,
 				8E1744511E64269A00928CFE /* Supporting Files */,
-				8E1744711E642A9B00928CFE /* OLEDView.h */,
-				8E1744721E642A9B00928CFE /* OLEDView.m */,
 			);
 			path = "oled-tool";
 			sourceTree = "<group>";
@@ -114,6 +123,27 @@
 				8E1744671E64269A00928CFE /* Info.plist */,
 			);
 			path = "oled-toolTests";
+			sourceTree = "<group>";
+		};
+		8E17447C1E67C23C00928CFE /* core */ = {
+			isa = PBXGroup;
+			children = (
+				8E1744711E642A9B00928CFE /* OLEDView.h */,
+				8E1744721E642A9B00928CFE /* OLEDView.m */,
+				8E1744791E67C06C00928CFE /* BufferArrayGenerator.h */,
+				8E17447A1E67C06C00928CFE /* BufferArrayGenerator.m */,
+				8E17447D1E67C7E800928CFE /* FontGenerator.h */,
+				8E17447E1E67C7E800928CFE /* FontGenerator.m */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
+		8E1744801E67C86D00928CFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E1744811E67C86D00928CFE /* QuartzCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +251,8 @@
 			files = (
 				8E1744731E642A9B00928CFE /* OLEDView.m in Sources */,
 				8E1744561E64269A00928CFE /* ViewController.m in Sources */,
+				8E17447F1E67C7E800928CFE /* FontGenerator.m in Sources */,
+				8E17447B1E67C06C00928CFE /* BufferArrayGenerator.m in Sources */,
 				8E1744531E64269A00928CFE /* main.m in Sources */,
 				8E1744501E64269A00928CFE /* AppDelegate.m in Sources */,
 			);

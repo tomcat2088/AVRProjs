@@ -11,4 +11,7 @@
 @interface OLEDView : NSView
 - (void)setImage:(NSImage *)image size:(CGSize)size;
 - (void)extractImageFile:(NSImage *)image;
+
+- (NSArray *)genOLEDBuffer;
+- (void)loadOLEDBuffer:(uint8_t *)buffer len:(int)bufferLen;
 @end
