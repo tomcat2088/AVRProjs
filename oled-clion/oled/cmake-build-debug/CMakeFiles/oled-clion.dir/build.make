@@ -81,9 +81,33 @@ CMakeFiles/oled-clion.dir/main.cpp.obj.provides: CMakeFiles/oled-clion.dir/main.
 CMakeFiles/oled-clion.dir/main.cpp.obj.provides.build: CMakeFiles/oled-clion.dir/main.cpp.obj
 
 
+CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj: CMakeFiles/oled-clion.dir/flags.make
+CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj: ../Classes/Font.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj"
+	/usr/local/CrossPack-AVR/bin/avr-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj -c "/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Font.cpp"
+
+CMakeFiles/oled-clion.dir/Classes/Font.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/oled-clion.dir/Classes/Font.cpp.i"
+	/usr/local/CrossPack-AVR/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Font.cpp" > CMakeFiles/oled-clion.dir/Classes/Font.cpp.i
+
+CMakeFiles/oled-clion.dir/Classes/Font.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/oled-clion.dir/Classes/Font.cpp.s"
+	/usr/local/CrossPack-AVR/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Font.cpp" -o CMakeFiles/oled-clion.dir/Classes/Font.cpp.s
+
+CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj.requires:
+
+.PHONY : CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj.requires
+
+CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj.provides: CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj.requires
+	$(MAKE) -f CMakeFiles/oled-clion.dir/build.make CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj.provides.build
+.PHONY : CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj.provides
+
+CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj.provides.build: CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj
+
+
 CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj: CMakeFiles/oled-clion.dir/flags.make
 CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj: ../Classes/Graphics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj"
 	/usr/local/CrossPack-AVR/bin/avr-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj -c "/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Graphics.cpp"
 
 CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj.provides.build: CMakeFiles/ol
 
 CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj: CMakeFiles/oled-clion.dir/flags.make
 CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj: ../Classes/LinkedArray.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj"
 	/usr/local/CrossPack-AVR/bin/avr-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj -c "/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/LinkedArray.cpp"
 
 CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj.provides.build: CMakeFiles
 
 CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj: CMakeFiles/oled-clion.dir/flags.make
 CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj: ../Classes/OLED.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj"
 	/usr/local/CrossPack-AVR/bin/avr-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj -c "/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/OLED.cpp"
 
 CMakeFiles/oled-clion.dir/Classes/OLED.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj.provides.build: CMakeFiles/oled-c
 
 CMakeFiles/oled-clion.dir/Classes/Pin.cpp.obj: CMakeFiles/oled-clion.dir/flags.make
 CMakeFiles/oled-clion.dir/Classes/Pin.cpp.obj: ../Classes/Pin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/oled-clion.dir/Classes/Pin.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/oled-clion.dir/Classes/Pin.cpp.obj"
 	/usr/local/CrossPack-AVR/bin/avr-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/oled-clion.dir/Classes/Pin.cpp.obj -c "/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Pin.cpp"
 
 CMakeFiles/oled-clion.dir/Classes/Pin.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/oled-clion.dir/Classes/Pin.cpp.obj.provides.build: CMakeFiles/oled-cl
 
 CMakeFiles/oled-clion.dir/Classes/SPI.cpp.obj: CMakeFiles/oled-clion.dir/flags.make
 CMakeFiles/oled-clion.dir/Classes/SPI.cpp.obj: ../Classes/SPI.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/oled-clion.dir/Classes/SPI.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/oled-clion.dir/Classes/SPI.cpp.obj"
 	/usr/local/CrossPack-AVR/bin/avr-g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/oled-clion.dir/Classes/SPI.cpp.obj -c "/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/SPI.cpp"
 
 CMakeFiles/oled-clion.dir/Classes/SPI.cpp.i: cmake_force
@@ -204,6 +228,7 @@ CMakeFiles/oled-clion.dir/Classes/SPI.cpp.obj.provides.build: CMakeFiles/oled-cl
 # Object files for target oled-clion
 oled__clion_OBJECTS = \
 "CMakeFiles/oled-clion.dir/main.cpp.obj" \
+"CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj" \
 "CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj" \
 "CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj" \
 "CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj" \
@@ -214,6 +239,7 @@ oled__clion_OBJECTS = \
 oled__clion_EXTERNAL_OBJECTS =
 
 ../bin/oled-clion: CMakeFiles/oled-clion.dir/main.cpp.obj
+../bin/oled-clion: CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj
 ../bin/oled-clion: CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj
 ../bin/oled-clion: CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj
 ../bin/oled-clion: CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj
@@ -221,7 +247,7 @@ oled__clion_EXTERNAL_OBJECTS =
 ../bin/oled-clion: CMakeFiles/oled-clion.dir/Classes/SPI.cpp.obj
 ../bin/oled-clion: CMakeFiles/oled-clion.dir/build.make
 ../bin/oled-clion: CMakeFiles/oled-clion.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ../bin/oled-clion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable ../bin/oled-clion"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/oled-clion.dir/link.txt --verbose=$(VERBOSE)
 	avr-objcopy -O ihex -R.eeprom -R .fuse -R .lock -R .signature /Users/wangyang/Documents/Projects/On\ Git/AVRProjs/oled-clion/oled/bin/oled-clion /Users/wangyang/Documents/Projects/On\ Git/AVRProjs/oled-clion/oled/bin/oled-clion.hex
 	avr-objcopy -O ihex -j .eeprom --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 /Users/wangyang/Documents/Projects/On\ Git/AVRProjs/oled-clion/oled/bin/oled-clion /Users/wangyang/Documents/Projects/On\ Git/AVRProjs/oled-clion/oled/bin/oled-clion.eep
@@ -234,6 +260,7 @@ CMakeFiles/oled-clion.dir/build: ../bin/oled-clion
 .PHONY : CMakeFiles/oled-clion.dir/build
 
 CMakeFiles/oled-clion.dir/requires: CMakeFiles/oled-clion.dir/main.cpp.obj.requires
+CMakeFiles/oled-clion.dir/requires: CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj.requires
 CMakeFiles/oled-clion.dir/requires: CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj.requires
 CMakeFiles/oled-clion.dir/requires: CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj.requires
 CMakeFiles/oled-clion.dir/requires: CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj.requires

@@ -123,6 +123,33 @@ oled-clion/fast:
 	$(MAKE) -f CMakeFiles/oled-clion.dir/build.make CMakeFiles/oled-clion.dir/build
 .PHONY : oled-clion/fast
 
+Classes/Font.obj: Classes/Font.cpp.obj
+
+.PHONY : Classes/Font.obj
+
+# target to build an object file
+Classes/Font.cpp.obj:
+	$(MAKE) -f CMakeFiles/oled-clion.dir/build.make CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj
+.PHONY : Classes/Font.cpp.obj
+
+Classes/Font.i: Classes/Font.cpp.i
+
+.PHONY : Classes/Font.i
+
+# target to preprocess a source file
+Classes/Font.cpp.i:
+	$(MAKE) -f CMakeFiles/oled-clion.dir/build.make CMakeFiles/oled-clion.dir/Classes/Font.cpp.i
+.PHONY : Classes/Font.cpp.i
+
+Classes/Font.s: Classes/Font.cpp.s
+
+.PHONY : Classes/Font.s
+
+# target to generate assembly for a file
+Classes/Font.cpp.s:
+	$(MAKE) -f CMakeFiles/oled-clion.dir/build.make CMakeFiles/oled-clion.dir/Classes/Font.cpp.s
+.PHONY : Classes/Font.cpp.s
+
 Classes/Graphics.obj: Classes/Graphics.cpp.obj
 
 .PHONY : Classes/Graphics.obj
@@ -294,6 +321,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... oled-clion"
+	@echo "... Classes/Font.obj"
+	@echo "... Classes/Font.i"
+	@echo "... Classes/Font.s"
 	@echo "... Classes/Graphics.obj"
 	@echo "... Classes/Graphics.i"
 	@echo "... Classes/Graphics.s"

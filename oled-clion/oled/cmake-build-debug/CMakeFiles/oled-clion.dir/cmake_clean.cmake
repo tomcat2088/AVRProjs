@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/oled-clion.dir/main.cpp.obj"
+  "CMakeFiles/oled-clion.dir/Classes/Font.cpp.obj"
   "CMakeFiles/oled-clion.dir/Classes/Graphics.cpp.obj"
   "CMakeFiles/oled-clion.dir/Classes/LinkedArray.cpp.obj"
   "CMakeFiles/oled-clion.dir/Classes/OLED.cpp.obj"

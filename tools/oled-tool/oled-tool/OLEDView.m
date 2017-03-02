@@ -42,7 +42,7 @@
         uint8_t val = dot & mask;
         return val > 0;
     }
-    NSColor *color =  [self.rawImg colorAtX:x y:self.image.size.height - y];
+    NSColor *color =  [self.rawImg colorAtX:x y:y];
     return [color alphaComponent] == 1;
 }
 

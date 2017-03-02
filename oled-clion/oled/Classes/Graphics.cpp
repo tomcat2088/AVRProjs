@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Graphics.h"
+#include "Font.h"
 
 #define _swap_int16_t(a, b) { int16_t t = a; a = b; b = t; }
 
@@ -121,7 +122,21 @@ void Painter::drawLines(Line *lines, uint16_t lineCount) {
 
 void Painter::drawText(const char *str) {
     const char *pChar = str;
-    while (pChar != )
+    Font font;
+    uint16_t pos = 0;
+    uint8_t *chBuffer = NULL;
+    uint16_t len;
+    while (*pChar != 0x00) {
+        font.loadCharBuffer(*pChar, &chBuffer, &len);
+        if ((pos + len) / width > (pos / width)) {
+            pos = (pos / width + 1) * width;
+        }
+        for (int i = 0; i < len; ++i) {
+            _buffer[i + pos] = chBuffer[i];
+        }
+        pos += len + 1;
+        pChar++;
+    }
 }
 
 void Painter::beginPath() {

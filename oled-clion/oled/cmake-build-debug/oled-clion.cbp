@@ -88,6 +88,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Font.cpp">
+			<Option target="oled-clion"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Font.h">
+			<Option target="oled-clion"/>
+		</Unit>
+		<Unit filename="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/FontArial.h">
+			<Option target="oled-clion"/>
+		</Unit>
 		<Unit filename="/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/oled/Classes/Graphics.cpp">
 			<Option target="oled-clion"/>
 		</Unit>

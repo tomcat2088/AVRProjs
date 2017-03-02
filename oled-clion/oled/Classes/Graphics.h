@@ -96,7 +96,7 @@ private:
     uint16_t width;
     uint16_t height;
 
-    Line _lines[30];
+    Line _lines[3];
     uint8_t _linesSize;
     Point pathStartLocation;
 };

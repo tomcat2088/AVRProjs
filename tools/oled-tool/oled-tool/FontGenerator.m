@@ -11,7 +11,7 @@
 
 @implementation FontGenerator
 + (NSImage *)charactorBitmap:(NSString *)str {
-    NSDictionary *attrs = @{NSFontAttributeName: [NSFont fontWithName:@"Arial" size:30]};
+    NSDictionary *attrs = @{NSFontAttributeName: [NSFont fontWithName:@"Arial" size:15]};
     NSSize textSize =  [str sizeWithAttributes:attrs];
     if (textSize.width == 0 || textSize.height == 0) {
         textSize.width = 40;
@@ -29,14 +29,15 @@
     int height = 8;
     int width = 2 + (int)(height / image.size.height * image.size.width);
     NSMutableArray *bufferOLED = [NSMutableArray new];
+    CGFloat displayScale = [[NSScreen mainScreen] backingScaleFactor];
     for (int i = 0; i < width; ++i) {
         uint8_t dot = 0x00;
         for (uint8_t k = 0; k < 8; ++k) {
             int imageX = (CGFloat)i / width * image.size.width;
             int imageY = (CGFloat)k / height * image.size.height;
-            BOOL blin = [rawImg colorAtX:imageX y:image.size.height - imageY].alphaComponent > 0;
+            BOOL blin = [rawImg colorAtX:imageX * displayScale y:(image.size.height - imageY) * displayScale].alphaComponent > 0;
             uint8_t val = blin ? 0xff : 0x00;
-            dot |= (0x01 << k) & val;
+            dot |= (0x80 >> k) & val;
         }
         [bufferOLED addObject:@(dot)];
     }
@@ -44,7 +45,7 @@
 }
 
 + (NSString *)genDefaultTable {
-     NSString *table = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.?!#";
+     NSString *table = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 !";
 //    for (uint8_t ch = 0x20; ch <= 0xfe; ++ch) {
 //        table = [table stringByAppendingFormat:@"%c", ch];
 //    }

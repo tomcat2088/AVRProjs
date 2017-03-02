@@ -7,11 +7,12 @@
 
 #define Use_Font_Arial
 
+#include <avr/io.h>
 #include "FontArial.h"
 
 class Font {
 public:
-    void loadCharBuffer(uint8_t ch, uint16_t **outBuffer, uint16_t *outBufferSize);
+    void loadCharBuffer(uint8_t ch, uint8_t **outBuffer, uint16_t *outBufferSize);
 };
 
 
