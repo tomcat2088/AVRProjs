@@ -1,3 +1,0 @@
-/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/wangyang/Documents/Projects/On Git/AVRProjs/oled-clion/cmake-build-debug/CMakeFiles/oled-clion.dir
