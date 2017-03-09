@@ -18,12 +18,12 @@ char TxBuf[32]=
         };
 char sta,tf;
 //*********************************************NRF24L01*************************************
-#define TX_ADR_WIDTH    5   	// 5 uints TX address width
-#define RX_ADR_WIDTH    5   	// 5 uints RX address width
-#define TX_PLOAD_WIDTH  32  	// 20 uints TX payload
-#define RX_PLOAD_WIDTH  32  	// 20 uints TX payload
-char  TX_ADDRESS[TX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0x01};	//±æµÿµÿ÷∑
-char  RX_ADDRESS[RX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0x01};	//Ω” ’µÿ÷∑
+#define TX_ADR_WIDTH    1   	// 5 uints TX address width
+#define RX_ADR_WIDTH    1   	// 5 uints RX address width
+#define TX_PLOAD_WIDTH  1  	// 20 uints TX payload
+#define RX_PLOAD_WIDTH  1  	// 20 uints TX payload
+char  TX_ADDRESS[TX_ADR_WIDTH]= {0x34};	//±æµÿµÿ÷∑
+char  RX_ADDRESS[RX_ADR_WIDTH]= {0x34};	//Ω” ’µÿ÷∑
 //***************************************NRF24L01ºƒ¥Ê∆˜÷∏¡Ó*******************************************************
 #define READ_REG        0x00  	// ∂¡ºƒ¥Ê∆˜÷∏¡Ó
 #define WRITE_REG       0x20 	// –¥ºƒ¥Ê∆˜÷∏¡Ó
@@ -62,12 +62,12 @@ char  RX_ADDRESS[RX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0x01};	//Ω” ’µÿ÷�
 #define SSD1306_LCDHEIGHT 32
 #define SSD1306_LCDWIDTH 128
 
-Pin wl_ce_s(PIN_A, 2);
-Pin wl_csn_s(PIN_A, 3);
-Pin wl_sck_s(PIN_A, 1);
-Pin wl_mosi_s(PIN_A, 4);
-Pin wl_miso_s(PIN_A, 0);
-Pin wl_irq_s(PIN_A, 5);
+Pin wl_ce_s(PIN_D, 2);
+Pin wl_csn_s(PIN_D, 3);
+Pin wl_sck_s(PIN_D, 1);
+Pin wl_mosi_s(PIN_D, 4);
+Pin wl_miso_s(PIN_D, 0);
+Pin wl_irq_s(PIN_D, 5);
 
 Pin wl_ce_r(PIN_D, 2);
 Pin wl_csn_r(PIN_D, 3);
@@ -138,8 +138,11 @@ uint8_t SPI_RW(uint8_t data, bool send = true) {
 uint8_t SPI_Read(uint8_t reg, bool send = true) {
     uint8_t reg_val = 0x00;
     wl_csn(send).setLow();
+    _delay_us(100);
     SPI_RW(reg, send);
+    _delay_us(100);
     reg_val = SPI_RW(0, send);
+    _delay_us(100);
     wl_csn(send).setHigh();
 
     return reg_val;
@@ -151,7 +154,9 @@ uint8_t SPI_RW_Reg(uint8_t reg, uint8_t value, bool send = true)
 
     wl_csn(send).setLow();                   // CSN low, init SPI transaction
     status = SPI_RW(reg, send);      // select register
+    _delay_us(100);
     SPI_RW(value, send);             // ..and write value to it..
+    _delay_us(100);
     wl_csn(send).setHigh();                   // CSN high again
 
     return(status);            // return nRF24L01 status uchar
@@ -177,9 +182,14 @@ char SPI_Write_Buf(char reg, char *pBuf, char uchars, bool send = true)
     char status,uchar_ctr;
 
     wl_csn(send).setLow();;             //SPI πƒ‹
+    _delay_us(100);
     status = SPI_RW(reg, send);
-    for(uchar_ctr=0; uchar_ctr<uchars; uchar_ctr++) //
+    _delay_us(100);
+    for(uchar_ctr=0; uchar_ctr<uchars; uchar_ctr++) { //
         SPI_RW(*pBuf++, send);
+        _delay_us(100);
+    }
+    _delay_us(100);
     wl_csn(send).setHigh();           //πÿ±’SPI
     return(status);    		  //
 }
@@ -187,22 +197,24 @@ char SPI_Write_Buf(char reg, char *pBuf, char uchars, bool send = true)
 void SetRX_Mode(bool send = true)
 {
     wl_ce(send).setLow();
-    //SPI_RW_Reg(WRITE_REG + CONFIG, 0x0f, send);   		// IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC	£¨÷˜Ω” ’
+    SPI_RW_Reg(WRITE_REG + CONFIG, 0x0f, send);   		// IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC	£¨÷˜Ω” ’
     wl_ce(send).setHigh();
-    _delay_ms(1000);
+    _delay_us(130);
 }
 
 char nRF24L01_RxPacket(char* rx_buf, bool send = true)
 {
     char revale=0;
+    _delay_us(100);
     sta=SPI_Read(STATUS, send);	// ∂¡»°◊¥Ã¨ºƒ¥Ê∆‰¿¥≈–∂œ ˝æ›Ω” ’◊¥øˆ
+
     if(sta&0x40)				// ≈–∂œ «∑ÒΩ” ’µΩ ˝æ›
     {
         wl_ce(send).setLow(); 			//SPI πƒ‹
         SPI_Read_Buf(RD_RX_PLOAD,rx_buf,TX_PLOAD_WIDTH, send);// read receive payload from RX_FIFO buffer
         revale =1;			//∂¡»° ˝æ›ÕÍ≥…±Í÷æ
     }
-    SPI_RW_Reg(WRITE_REG+STATUS,sta, send);   //Ω” ’µΩ ˝æ›∫ÛRX_DR,TX_DS,MAX_PT∂º÷√∏ﬂŒ™1£¨Õ®π˝–¥1¿¥«Â≥˛÷–∂œ±Í÷æ
+    SPI_RW_Reg(WRITE_REG+STATUS,0xff, send);   //Ω” ’µΩ ˝æ›∫ÛRX_DR,TX_DS,MAX_PT∂º÷√∏ﬂŒ™1£¨Õ®π˝–¥1¿¥«Â≥˛÷–∂œ±Í÷æ
     return revale;
 }
 
@@ -224,9 +236,9 @@ void init_NRF24L01_Send(bool send = true)
     wl_sck(send).setLow();   // Spi clock line init high
     SPI_Write_Buf(WRITE_REG + TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH, send);    // –¥±æµÿµÿ÷∑
     SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, RX_ADDRESS, RX_ADR_WIDTH, send); // –¥Ω” ’∂Àµÿ÷∑
-    SPI_RW_Reg(WRITE_REG + EN_AA, 0x01, send);      //  ∆µµ¿0◊‘∂Ø	ACK”¶¥‘ –Ì
+    SPI_RW_Reg(WRITE_REG + EN_AA, 0x00, send);      //  ∆µµ¿0◊‘∂Ø	ACK”¶¥‘ –Ì
     SPI_RW_Reg(WRITE_REG + EN_RXADDR, 0x01, send);  //  ‘ –ÌΩ” ’µÿ÷∑÷ª”–∆µµ¿0£¨»Áπ˚–Ë“™∂‡∆µµ¿ø…“‘≤ŒøºPage21
-    SPI_RW_Reg(WRITE_REG + RF_CH, 0, send);        //   …Ë÷√–≈µ¿π§◊˜Œ™2.4GHZ£¨ ’∑¢±ÿ–Î“ª÷¬
+    SPI_RW_Reg(WRITE_REG + RF_CH, 20, send);        //   …Ë÷√–≈µ¿π§◊˜Œ™2.4GHZ£¨ ’∑¢±ÿ–Î“ª÷¬
     SPI_RW_Reg(WRITE_REG + RX_PW_P0, RX_PLOAD_WIDTH, send); //…Ë÷√Ω” ’ ˝æ›≥§∂»£¨±æ¥Œ…Ë÷√Œ™32◊÷Ω⁄
     SPI_RW_Reg(WRITE_REG + RF_SETUP, 0x07, send);   		//…Ë÷√∑¢…‰ÀŸ¬ Œ™1MHZ£¨∑¢…‰π¶¬ Œ™◊Ó¥Û÷µ0dB
     SPI_RW_Reg(WRITE_REG + CONFIG, 0x0e, send);   		 // IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC£¨÷˜∑¢ÀÕ
@@ -234,18 +246,26 @@ void init_NRF24L01_Send(bool send = true)
 
 void init_NRF24L01_Recv(bool send = true)
 {
+    _delay_us(100);
     wl_ce(send).setLow();    // chip enable
+    _delay_us(100);
     wl_csn(send).setHigh();   // Spi disable
     wl_sck(send).setLow();   // Spi clock line init high
-    SPI_Write_Buf(WRITE_REG + TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH, send);    // –¥±æµÿµÿ÷∑
-    SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, RX_ADDRESS, RX_ADR_WIDTH, send); // –¥Ω” ’∂Àµÿ÷∑
-    SPI_RW_Reg(WRITE_REG + EN_AA, 0x01, send);      //  ∆µµ¿0◊‘∂Ø	ACK”¶¥‘ –Ì
+    SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH, send);    // –¥±æµÿµÿ÷∑
+//    SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, RX_ADDRESS, RX_ADR_WIDTH, send); // –¥Ω” ’∂Àµÿ÷∑
+
+    SPI_RW_Reg(WRITE_REG + EN_AA, 0x00, send);      //  ∆µµ¿0◊‘∂Ø	ACK”¶¥‘ –Ì
     SPI_RW_Reg(WRITE_REG + EN_RXADDR, 0x01, send);  //  ‘ –ÌΩ” ’µÿ÷∑÷ª”–∆µµ¿0£¨»Áπ˚–Ë“™∂‡∆µµ¿ø…“‘≤ŒøºPage21
+    SPI_RW_Reg(WRITE_REG + SETUP_AW, 0x03);//5byteµÄµØÖ·
+    SPI_RW_Reg(WRITE_REG + SETUP_RETR, 0x00);//½ûÖ¹ÖØ·¢
     SPI_RW_Reg(WRITE_REG + RF_CH, 0, send);        //   …Ë÷√–≈µ¿π§◊˜Œ™2.4GHZ£¨ ’∑¢±ÿ–Î“ª÷¬
-    SPI_RW_Reg(WRITE_REG + RX_PW_P0, RX_PLOAD_WIDTH, send); //…Ë÷√Ω” ’ ˝æ›≥§∂»£¨±æ¥Œ…Ë÷√Œ™32◊÷Ω⁄
+    SPI_RW_Reg(WRITE_REG + RX_PW_P0, TX_PLOAD_WIDTH, send); //…Ë÷√Ω” ’ ˝æ›≥§∂»£¨±æ¥Œ…Ë÷√Œ™32◊÷Ω⁄
     SPI_RW_Reg(WRITE_REG + RF_SETUP, 0x07, send);   		//…Ë÷√∑¢…‰ÀŸ¬ Œ™1MHZ£¨∑¢…‰π¶¬ Œ™◊Ó¥Û÷µ0dB
     SPI_RW_Reg(WRITE_REG + CONFIG, 0x0f, send);   		 // IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC£¨÷˜∑¢ÀÕ
-    _delay_ms(6000);
+
+    wl_ce(send).setHigh();
+    _delay_us(2000);
+
 }
 
 //Painter painter(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT);
@@ -285,36 +305,21 @@ int main() {
     wl_miso_r.setModeIn();
     wl_irq_r.setModeIn();
 
-    //    alert("INIT RECV", oled);
-    init_NRF24L01_Recv(false);
-//    alert("INIT RECV COMPLETE", oled);
-    nRF24L01_TxPacket(TxBuf);
-
-
-//    alert("INIT SEND", oled);
-    init_NRF24L01_Send(true);
-//    alert("INIT SEND COMPLETE", oled);
-//    nRF24L01_TxPacket(TxBuf, true);
     DDRB = 0xff;
-    PORTB = 0x01;
-    for (int i = 0; i < 3; ++i) {
-        TxBuf[0] = 0xaa;
-        nRF24L01_TxPacket(TxBuf, true);
-    }
+    init_NRF24L01_Recv(false);
+    _delay_ms(2000);
+//    PORTB = SPI_Read(STATUS, false);
 
-    char RxBuf[32];
+    char RxBuf[RX_PLOAD_WIDTH];
     uint8_t val = 0x01;
     while(1) {
-        nRF24L01_TxPacket(TxBuf, true);
-        _delay_ms(2100);
+//        PORTB = SPI_Read(STATUS, true);
+//        _delay_ms(2000);
         SetRX_Mode(false);
+        //PORTB = SPI_Read(STATUS, true);
         if(nRF24L01_RxPacket(RxBuf, false)) {
-            DDRB = 0xff;
             PORTB = RxBuf[0];
         }
-        PORTB = val;
-        val <<= 1;
-        nRF24L01_TxPacket(TxBuf, true);
     }
 
 
