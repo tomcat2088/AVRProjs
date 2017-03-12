@@ -7,16 +7,16 @@
 char seg[10]={0xC0,0xCF,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};         //0~~9∂Œ¬Î
 char TxBuf[32]=
         {
-                0xfe,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4
+                0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4,0x01,0x02,0x03,0x4
         };
 char sta,tf;
 //*********************************************NRF24L01*************************************
-#define TX_ADR_WIDTH    1   	// 5 uints TX address width
-#define RX_ADR_WIDTH    1   	// 5 uints RX address width
-#define TX_PLOAD_WIDTH  1  	// 20 uints TX payload
-#define RX_PLOAD_WIDTH  1  	// 20 uints TX payload
-char  TX_ADDRESS[TX_ADR_WIDTH]= {0x34};	//±æµÿµÿ÷∑
-char  RX_ADDRESS[RX_ADR_WIDTH]= {0x34};	//Ω” ’µÿ÷∑
+#define TX_ADR_WIDTH    5   	// 5 uints TX address width
+#define RX_ADR_WIDTH    5   	// 5 uints RX address width
+#define TX_PLOAD_WIDTH  20  	// 20 uints TX payload
+#define RX_PLOAD_WIDTH  20  	// 20 uints TX payload
+char  TX_ADDRESS[TX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0x01};	//±æµÿµÿ÷∑
+char  RX_ADDRESS[RX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0x01};	//Ω” ’µÿ÷∑
 //***************************************NRF24L01ºƒ¥Ê∆˜÷∏¡Ó*******************************************************
 #define READ_REG        0x00  	// ∂¡ºƒ¥Ê∆˜÷∏¡Ó
 #define WRITE_REG       0x20 	// –¥ºƒ¥Ê∆˜÷∏¡Ó
@@ -159,9 +159,10 @@ char nRF24L01_RxPacket(char* rx_buf, bool send = true)
 void nRF24L01_TxPacket(char * tx_buf, bool send = true)
 {
     digitalWrite(CE, LOW);			//StandBy Iƒ£ Ω
-    SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH, send); // ◊∞‘ÿΩ” ’∂Àµÿ÷∑
+//    SPI_Write_Buf(WRITE_REG + TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH, send);    // –¥±æµÿµÿ÷∑
+//    SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH, send); // ◊∞‘ÿΩ” ’∂Àµÿ÷∑
     SPI_Write_Buf(WR_TX_PLOAD, tx_buf, TX_PLOAD_WIDTH, send); 			 // ◊∞‘ÿ ˝æ›
-	SPI_RW_Reg(WRITE_REG + CONFIG, 0x3e);   		 // IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC£¨÷˜∑¢ÀÕ
+//	SPI_RW_Reg(WRITE_REG + CONFIG, 0x0e);   		 // IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC£¨÷˜∑¢ÀÕ
     digitalWrite(CE, HIGH);		 //÷√∏ﬂCE£¨º§∑¢ ˝æ›∑¢ÀÕ
     _delay_us(10);
 }
@@ -174,38 +175,14 @@ void init_NRF24L01_Send(bool send = true)
     digitalWrite(SCK, LOW);   // Spi clock line init high
     SPI_Write_Buf(WRITE_REG + TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH, send);    // –¥±æµÿµÿ÷∑
     SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, RX_ADDRESS, RX_ADR_WIDTH, send); // –¥Ω” ’∂Àµÿ÷∑
-//    SPI_RW_Reg(WRITE_REG + SETUP_AW, 0x03);//5byteµÄµØÖ·
-    SPI_RW_Reg(WRITE_REG + SETUP_RETR, 0x00);//½ûÖ¹ÖØ·¢
-    SPI_RW_Reg(WRITE_REG + EN_AA, 0x00, send);      //  ∆µµ¿0◊‘∂Ø	ACK”¶¥‘ –Ì
-    SPI_RW_Reg(WRITE_REG + EN_RXADDR, 0x01, send);  //  ‘ –ÌΩ” ’µÿ÷∑÷ª”–∆µµ¿0£¨»Áπ˚–Ë“™∂‡∆µµ¿ø…“‘≤ŒøºPage21
-    SPI_RW_Reg(WRITE_REG + RF_CH, 0, send);        //   …Ë÷√–≈µ¿π§◊˜Œ™2.4GHZ£¨ ’∑¢±ÿ–Î“ª÷¬
-    SPI_RW_Reg(WRITE_REG + RX_PW_P0, RX_PLOAD_WIDTH, send); //…Ë÷√Ω” ’ ˝æ›≥§∂»£¨±æ¥Œ…Ë÷√Œ™32◊÷Ω⁄
-    SPI_RW_Reg(WRITE_REG + RF_SETUP, 0x07, send);   		//…Ë÷√∑¢…‰ÀŸ¬ Œ™1MHZ£¨∑¢…‰π¶¬ Œ™◊Ó¥Û÷µ0dB
-    SPI_RW_Reg(WRITE_REG + CONFIG, 0x3e, send);   		 // IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC£¨÷˜∑¢ÀÕ
-
-    char buffer[255];
-    sprintf(buffer, "setup: %x",  SPI_Read(RF_SETUP, false));
-    Serial.println(buffer);
-    sprintf(buffer, "channel: %x",  SPI_Read(RF_CH, false));
-    Serial.println(buffer);
-}
-
-void init_NRF24L01_Recv(bool send = true)
-{
-    _delay_us(100);
-    digitalWrite(CE, LOW);    // chip enable
-    digitalWrite(CSN, HIGH);   // Spi disable
-    digitalWrite(SCK, LOW);   // Spi clock line init high
-    SPI_Write_Buf(WRITE_REG + TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH, send);    // –¥±æµÿµÿ÷∑
-    SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, RX_ADDRESS, RX_ADR_WIDTH, send); // –¥Ω” ’∂Àµÿ÷∑
     SPI_RW_Reg(WRITE_REG + SETUP_AW, 0x03);//5byteµÄµØÖ·
-    SPI_RW_Reg(WRITE_REG + SETUP_RETR, 0x00);//½ûÖ¹ÖØ·¢
-    SPI_RW_Reg(WRITE_REG + EN_AA, 0x01, send);      //  ∆µµ¿0◊‘∂Ø	ACK”¶¥‘ –Ì
+    SPI_RW_Reg(WRITE_REG + SETUP_RETR, 0xff);//½ûÖ¹ÖØ·¢
+    SPI_RW_Reg(WRITE_REG + EN_AA, 0x00, send);      //  ∆µµ¿0◊‘∂Ø	ACK”¶¥‘ –Ì
     SPI_RW_Reg(WRITE_REG + EN_RXADDR, 0x01, send);  //  ‘ –ÌΩ” ’µÿ÷∑÷ª”–∆µµ¿0£¨»Áπ˚–Ë“™∂‡∆µµ¿ø…“‘≤ŒøºPage21
     SPI_RW_Reg(WRITE_REG + RF_CH, 20, send);        //   …Ë÷√–≈µ¿π§◊˜Œ™2.4GHZ£¨ ’∑¢±ÿ–Î“ª÷¬
     SPI_RW_Reg(WRITE_REG + RX_PW_P0, RX_PLOAD_WIDTH, send); //…Ë÷√Ω” ’ ˝æ›≥§∂»£¨±æ¥Œ…Ë÷√Œ™32◊÷Ω⁄
-    SPI_RW_Reg(WRITE_REG + RF_SETUP, 0x07, send);   		//…Ë÷√∑¢…‰ÀŸ¬ Œ™1MHZ£¨∑¢…‰π¶¬ Œ™◊Ó¥Û÷µ0dB
-    SPI_RW_Reg(WRITE_REG + CONFIG, 0x0f, send);   		 // IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC£¨÷˜∑¢ÀÕ
+    SPI_RW_Reg(WRITE_REG + RF_SETUP, 0x0f, send);   		//…Ë÷√∑¢…‰ÀŸ¬ Œ™1MHZ£¨∑¢…‰π¶¬ Œ™◊Ó¥Û÷µ0dB
+    SPI_RW_Reg(WRITE_REG + CONFIG, 0x0e, send);   		 // IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC£¨÷˜∑¢ÀÕ
 
     char buffer[255];
     sprintf(buffer, "setup: %x",  SPI_Read(RF_SETUP, false));
@@ -241,44 +218,58 @@ void NRFSendApp::setup() {
 
 static char data = 0x01;
 void NRFSendApp::loop() {
-    _delay_ms(1000);
-    char status = SPI_Read(STATUS, false);
-    char buffer[255];
-    sprintf(buffer, "status: %x",  status);
-    Serial.println(buffer);
-
-    sprintf(buffer, "irq: %x",  digitalRead(IRQ));
-    Serial.println(buffer);
-    if (status & 0x01 << 4) {
-        Serial.println("Max RT");
-        SPI_RW_Reg(WRITE_REG + STATUS, 0x10);
-        char buffer[255];
-        sprintf(buffer, "status: %x",  status);
-        Serial.println(buffer);
-        _delay_ms(100);
-    } else if(status & 0x01 << 5) {
-        Serial.println("TX_DS");
-        SPI_RW_Reg(WRITE_REG + STATUS, 0xff);
-        _delay_ms(2000);
-        TxBuf[0] = ~data;
+    TxBuf[0] = data;
+    for (int i = 0; i < 15; ++i) {
         nRF24L01_TxPacket(TxBuf, true);
-        data <<= 1;
-        if (data == 0) {
-            data = 0x01;
-        }
     }
 
 
-
-    String input = Serial.readString();
-    if (input.charAt(0) == 's') {
-        Serial.println("NRF sending...");
-        char buffer[255];
-        sprintf(buffer, "%x", 0xaa);
-        Serial.println(buffer);
-        TxBuf[0] = data;
-//        nRF24L01_TxPacket(TxBuf, true);
-//        _delay_ms(200);
-        data++;
+//    _delay_us(500);
+////    SPI_RW_Reg(FLUSH_TX, 0xff);
+    _delay_us(100);
+//    SPI_RW_Reg(WRITE_REG + STATUS, 0xff);
+    data <<= 1;
+    if (data == 0) {
+        data = 0x01;
     }
+////    _delay_ms(1000);
+//    char status = SPI_Read(STATUS, false);
+//    if (status & 0x01 << 4) {
+//        Serial.println("Max RT");
+//        SPI_RW_Reg(WRITE_REG + STATUS, 0x10);
+//        char buffer[255];
+//        sprintf(buffer, "status: %x",  status);
+//        Serial.println(buffer);
+//        _delay_ms(100);
+//    } else if(status & 0x01 << 5) {
+//        Serial.println("TX_DS");
+//        SPI_RW_Reg(WRITE_REG + STATUS, 0xff);
+//        _delay_us(100);
+//        SPI_RW_Reg(FLUSH_TX, 0xff);
+//
+//        TxBuf[0] = data;
+//        for (int i = 0; i < 1; ++i)
+//        {
+//            nRF24L01_TxPacket(TxBuf, true);
+//        }
+//
+//        data <<= 1;
+//        if (data == 0) {
+//            data = 0x01;
+//        }
+//    }
+//
+//
+//
+//    String input = Serial.readString();
+//    if (input.charAt(0) == 's') {
+//        Serial.println("NRF sending...");
+//        char buffer[255];
+//        sprintf(buffer, "%x", 0xaa);
+//        Serial.println(buffer);
+//        TxBuf[0] = data;
+////        nRF24L01_TxPacket(TxBuf, true);
+////        _delay_ms(200);
+//        data++;
+//    }
 }

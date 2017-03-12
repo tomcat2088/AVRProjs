@@ -18,12 +18,12 @@ char TxBuf[32]=
         };
 char sta,tf;
 //*********************************************NRF24L01*************************************
-#define TX_ADR_WIDTH    1   	// 5 uints TX address width
-#define RX_ADR_WIDTH    1   	// 5 uints RX address width
-#define TX_PLOAD_WIDTH  1  	// 20 uints TX payload
-#define RX_PLOAD_WIDTH  1  	// 20 uints TX payload
-char  TX_ADDRESS[TX_ADR_WIDTH]= {0x34};	//±æµÿµÿ÷∑
-char  RX_ADDRESS[RX_ADR_WIDTH]= {0x34};	//Ω” ’µÿ÷∑
+#define TX_ADR_WIDTH    5   	// 5 uints TX address width
+#define RX_ADR_WIDTH    5   	// 5 uints RX address width
+#define TX_PLOAD_WIDTH  20  	// 20 uints TX payload
+#define RX_PLOAD_WIDTH  20  	// 20 uints TX payload
+char  TX_ADDRESS[TX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0x01};	//±æµÿµÿ÷∑
+char  RX_ADDRESS[RX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0x01};	//Ω” ’µÿ÷∑
 //***************************************NRF24L01ºƒ¥Ê∆˜÷∏¡Ó*******************************************************
 #define READ_REG        0x00  	// ∂¡ºƒ¥Ê∆˜÷∏¡Ó
 #define WRITE_REG       0x20 	// –¥ºƒ¥Ê∆˜÷∏¡Ó
@@ -138,11 +138,8 @@ uint8_t SPI_RW(uint8_t data, bool send = true) {
 uint8_t SPI_Read(uint8_t reg, bool send = true) {
     uint8_t reg_val = 0x00;
     wl_csn(send).setLow();
-    _delay_us(100);
     SPI_RW(reg, send);
-    _delay_us(100);
     reg_val = SPI_RW(0, send);
-    _delay_us(100);
     wl_csn(send).setHigh();
 
     return reg_val;
@@ -199,7 +196,7 @@ void SetRX_Mode(bool send = true)
     wl_ce(send).setLow();
     SPI_RW_Reg(WRITE_REG + CONFIG, 0x0f, send);   		// IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC	£¨÷˜Ω” ’
     wl_ce(send).setHigh();
-    _delay_us(130);
+    _delay_us(2);
 }
 
 char nRF24L01_RxPacket(char* rx_buf, bool send = true)
@@ -215,6 +212,8 @@ char nRF24L01_RxPacket(char* rx_buf, bool send = true)
         revale =1;			//∂¡»° ˝æ›ÕÍ≥…±Í÷æ
     }
     SPI_RW_Reg(WRITE_REG+STATUS,0xff, send);   //Ω” ’µΩ ˝æ›∫ÛRX_DR,TX_DS,MAX_PT∂º÷√∏ﬂŒ™1£¨Õ®π˝–¥1¿¥«Â≥˛÷–∂œ±Í÷æ
+    SPI_RW_Reg(FLUSH_RX,0xff, send);   //Ω” ’µΩ ˝æ›∫ÛRX_DR,TX_DS,MAX_PT∂º÷√∏ﬂŒ™1£¨Õ®π˝–¥1¿¥«Â≥˛÷–∂œ±Í÷æ
+
     return revale;
 }
 
@@ -251,16 +250,16 @@ void init_NRF24L01_Recv(bool send = true)
     _delay_us(100);
     wl_csn(send).setHigh();   // Spi disable
     wl_sck(send).setLow();   // Spi clock line init high
-    SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, TX_ADDRESS, TX_ADR_WIDTH, send);    // –¥±æµÿµÿ÷∑
-//    SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, RX_ADDRESS, RX_ADR_WIDTH, send); // –¥Ω” ’∂Àµÿ÷∑
+    SPI_Write_Buf(WRITE_REG + TX_ADDR, TX_ADDRESS, TX_ADR_WIDTH, send);    // –¥±æµÿµÿ÷∑
+    SPI_Write_Buf(WRITE_REG + RX_ADDR_P0, RX_ADDRESS, RX_ADR_WIDTH, send); // –¥Ω” ’∂Àµÿ÷∑
 
     SPI_RW_Reg(WRITE_REG + EN_AA, 0x00, send);      //  ∆µµ¿0◊‘∂Ø	ACK”¶¥‘ –Ì
     SPI_RW_Reg(WRITE_REG + EN_RXADDR, 0x01, send);  //  ‘ –ÌΩ” ’µÿ÷∑÷ª”–∆µµ¿0£¨»Áπ˚–Ë“™∂‡∆µµ¿ø…“‘≤ŒøºPage21
     SPI_RW_Reg(WRITE_REG + SETUP_AW, 0x03);//5byteµÄµØÖ·
-    SPI_RW_Reg(WRITE_REG + SETUP_RETR, 0x00);//½ûÖ¹ÖØ·¢
-    SPI_RW_Reg(WRITE_REG + RF_CH, 0, send);        //   …Ë÷√–≈µ¿π§◊˜Œ™2.4GHZ£¨ ’∑¢±ÿ–Î“ª÷¬
+    SPI_RW_Reg(WRITE_REG + SETUP_RETR, 0xff);//½ûÖ¹ÖØ·¢
+    SPI_RW_Reg(WRITE_REG + RF_CH, 20, send);        //   …Ë÷√–≈µ¿π§◊˜Œ™2.4GHZ£¨ ’∑¢±ÿ–Î“ª÷¬
     SPI_RW_Reg(WRITE_REG + RX_PW_P0, TX_PLOAD_WIDTH, send); //…Ë÷√Ω” ’ ˝æ›≥§∂»£¨±æ¥Œ…Ë÷√Œ™32◊÷Ω⁄
-    SPI_RW_Reg(WRITE_REG + RF_SETUP, 0x07, send);   		//…Ë÷√∑¢…‰ÀŸ¬ Œ™1MHZ£¨∑¢…‰π¶¬ Œ™◊Ó¥Û÷µ0dB
+    SPI_RW_Reg(WRITE_REG + RF_SETUP, 0x0f, send);   		//…Ë÷√∑¢…‰ÀŸ¬ Œ™1MHZ£¨∑¢…‰π¶¬ Œ™◊Ó¥Û÷µ0dB
     SPI_RW_Reg(WRITE_REG + CONFIG, 0x0f, send);   		 // IRQ ’∑¢ÕÍ≥…÷–∂œœÏ”¶£¨16ŒªCRC£¨÷˜∑¢ÀÕ
 
     wl_ce(send).setHigh();
@@ -305,12 +304,14 @@ int main() {
     wl_miso_r.setModeIn();
     wl_irq_r.setModeIn();
 
+    DDRA = 0xff;
+    PORTA = 0xff;
+
     DDRB = 0xff;
     init_NRF24L01_Recv(false);
-    _delay_ms(2000);
 //    PORTB = SPI_Read(STATUS, false);
 
-    char RxBuf[RX_PLOAD_WIDTH];
+    char RxBuf[TX_PLOAD_WIDTH];
     uint8_t val = 0x01;
     while(1) {
 //        PORTB = SPI_Read(STATUS, true);
