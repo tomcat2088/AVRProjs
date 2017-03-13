@@ -11,6 +11,9 @@ class NRFSendApp  : public AppBase {
 public:
     virtual void setup();
     virtual void loop();
+
+private:
+    void sendBytes(uint8_t *data, uint8_t count);
 };
 
 

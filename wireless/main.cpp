@@ -20,8 +20,8 @@ char sta,tf;
 //*********************************************NRF24L01*************************************
 #define TX_ADR_WIDTH    5   	// 5 uints TX address width
 #define RX_ADR_WIDTH    5   	// 5 uints RX address width
-#define TX_PLOAD_WIDTH  20  	// 20 uints TX payload
-#define RX_PLOAD_WIDTH  20  	// 20 uints TX payload
+#define TX_PLOAD_WIDTH  4  	// 20 uints TX payload
+#define RX_PLOAD_WIDTH  4  	// 20 uints TX payload
 char  TX_ADDRESS[TX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0x01};	//±æµÿµÿ÷∑
 char  RX_ADDRESS[RX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0x01};	//Ω” ’µÿ÷∑
 //***************************************NRF24L01ºƒ¥Ê∆˜÷∏¡Ó*******************************************************
@@ -267,29 +267,17 @@ void init_NRF24L01_Recv(bool send = true)
 
 }
 
-//Painter painter(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT);
-void alert(const char *message, OLED oled) {
-//    painter.clear();
-//    painter.drawText(message);
-//    oled.paint(painter);
-}
+//void recvBytes(uint8_t *rxBuf, uint8_t **data, uint8_t dataSize) {
+//    static uint8_t lastPackage = 0xff;
+//    uint8_t packageNo = rxBuf[0];
+//    if (packageNo != lastPackage) {
+//        lastPackage = packageNo;
+//        dataSize = rxBuf[1];
+//        data = ()(rxBuf + 2);
+//    }
+//}
 
 int main() {
-    // setup OLED Pins
-//    Pin cs(PIN_B, 0);
-//    Pin dc(PIN_B, 1);
-//    Pin rst(PIN_B, 2);
-//    Pin mosi(PIN_B, 3);
-//    Pin sck(PIN_B, 4);
-//    OLED oled(mosi, sck, dc, rst, cs, SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT);
-//
-//    // setup oled registers
-//    oled.begin(false);
-//
-//    // draw line
-//    painter.clear();
-//    painter.drawText("SYSTEM ON");
-//    oled.paint(painter);
 
     wl_ce_s.setModeOut();
     wl_csn_s.setModeOut();
@@ -309,17 +297,13 @@ int main() {
 
     DDRB = 0xff;
     init_NRF24L01_Recv(false);
-//    PORTB = SPI_Read(STATUS, false);
 
     char RxBuf[TX_PLOAD_WIDTH];
     uint8_t val = 0x01;
     while(1) {
-//        PORTB = SPI_Read(STATUS, true);
-//        _delay_ms(2000);
         SetRX_Mode(false);
-        //PORTB = SPI_Read(STATUS, true);
         if(nRF24L01_RxPacket(RxBuf, false)) {
-            PORTB = RxBuf[0];
+            PORTB = RxBuf[3];
         }
     }
 
